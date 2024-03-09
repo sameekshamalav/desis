@@ -19,10 +19,10 @@ class User(models.Model):
     phone_no = models.CharField(max_length=10, validators=[validators.MinLengthValidator(10)])
     email = models.EmailField()
     pincode = models.ForeignKey(Pincode, on_delete=models.CASCADE)
-    monthlybudget = models.IntegerField()
-    targetsavings = models.IntegerField()
-    allowedexpense = models.IntegerField()
-    password = models.CharField(max_length=255, default="")  # Added password field
+    monthly_budget = models.IntegerField()  # Modified to snake_case
+    target_savings = models.IntegerField()  # Modified to snake_case
+    allowed_expense = models.IntegerField()  # Modified to snake_case
+    password = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return f"{self.user_id}: {self.name}"
@@ -34,7 +34,7 @@ class Site(models.Model):
     site_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     url = models.CharField(max_length=255)
-    paymenturl = models.CharField(max_length=255)
+    payment_url = models.CharField(max_length=255)  # Modified to snake_case
 
     def __str__(self):
         return self.name
@@ -90,13 +90,13 @@ class Expenses(models.Model):
         db_table = 'expenses'
 
 class UserStatus(models.Model):
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # Modified to OneToOneField
     total_expenses = models.DecimalField(max_digits=10, decimal_places=2)
     last_updated = models.DateTimeField(default=timezone.now)
-    allowedexpense = models.IntegerField()
-    monthlybudget = models.IntegerField()
+    allowed_expense = models.IntegerField()  # Modified to snake_case
+    monthly_budget = models.IntegerField()  # Modified to snake_case
     score = models.DecimalField(max_digits=10, decimal_places=2)
-    currentbalance = models.IntegerField()
+    current_balance = models.IntegerField()  # Modified to snake_case
     pincode = models.IntegerField()
 
     def __str__(self):
@@ -107,12 +107,12 @@ class UserStatus(models.Model):
 
 class Leaderboard(models.Model):
     leaderboard_id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Modified to ForeignKey
     user_score = models.DecimalField(max_digits=10, decimal_places=2)
     pincode = models.IntegerField()
 
     def __str__(self):
-        return f"{self.leaderboard_id}: {self.user_id} - {self.user_score}"
+        return f"{self.leaderboard_id}: {self.user} - {self.user_score}"
 
     class Meta:
         db_table = 'leaderboard'
