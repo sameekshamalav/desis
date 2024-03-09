@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* Section styles with the color scheme */
+        section {
+            background-color: #e7eaf6; /* Lighter background color */
+            color: #333; /* Darker text color */
+            padding: 20px;
+            margin-bottom: 20px; /* Add margin between sections if desired */
+            border-radius: 10px; /* Rounded corners for sections */
+        }
+
+        /* Specific color adjustments for h2 within sections */
+        section h2 {
+            color: #113f67; /* Darker text color for section headings */
+        }
+
+        /* Navbar link color */
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #38598b; /* Hover color adjustment */
+        }
+ 
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Lighter background color for the body */
+            color: #333; /* Default text color */
+        }
+        .hello {
+            background-color: #38598b; /* Darker color for the front page */
+            color: #fff;
+            padding: 40px 0; /* Increased padding for better visibility */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid #113f67; /* Border between front page and sections */
+        }
+        nav {
+            background-color: #113f67; /* Darker color for the navbar */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h2 {
+            color: #113f67; /* Darker text color for general headings */
+        }
+
+        /* Table styling */
+        table {
+            width: 70%;
+            margin: 20px auto; /* Center the table horizontally */
+            border-collapse: collapse;
+            border-left: 5px solid #113f67; /* Left border color adjustment */
+            border-right: 5px solid #113f67; /* Right border color adjustment */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center; /* Center the content within table cells */
+            border-bottom: 1px solid #333; /* Darker border color */
+        }
+
+        th {
+            background-color: #113f67; /* Darker color for table header */
+            color: #fff;
+        }
+
+        td + td {
+            border-left: 1px solid #333; /* Darker border between columns */
+        }
+
+        /* Form styling */
+        .friend-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .friend-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .friend-form select, .friend-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .friend-form button {
+            background-color: #113f67; /* Darker color for the button */
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners for the button */
+        }
+
+        .friend-form button:hover {
+            background-color: #38598b; /* Darker hover color adjustment */
+        }
+
+        /* Style adjustments for form options */
+        .form-options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .form-options label {
+            margin-bottom: 10px;
+        }
+
+        .group-code {
+            color: #113f67; /* Darker text color for the group code */
+            margin-top: 10px;
+        }
+
+        .drop-down {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Add smooth scrolling to all links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <nav>
+        <a href="#profile">User Profile</a>
+        <a href="#scorecard">Scorecard</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#expenses">Expense Tracking</a>
+        <a href="#friends">Friends Group</a>
+    </nav>
+    
+    <div class="hello">
+        <h1>Welcome to MyWebsite</h1>
+        <p>A place to track your expenses and compete with friends!</p>
+    </div>
+    
+    <section id="profile">
+        <h2>User Profile</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur magnam iure unde quos dicta inventore sunt quam soluta modi eaque, nesciunt molestiae voluptatibus corrupti nihil dolorem quod in iusto porro?</p>
+    </section>
+    
+    <section id="scorecard">
+        <h2>Scorecard</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio expedita voluptate id dolor, incidunt maiores eligendi neque dolorem itaque perferendis explicabo eum. Quis natus, nobis adipisci magni praesentium possimus impedit.</p>
+    </section>
+    
+    <section id="leaderboard">
+        <h2>Leaderboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 10 empty rows -->
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section id="expenses">
+        <h2>Expense Tracking</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis pariatur nobis ipsum consequatur laudantium omnis harum laboriosam perferendis at enim, nostrum assumenda est nisi alias veritatis labore placeat minus deserunt!</p>
+    </section>
+    
+    <section id="friends">
+        <h2>Friends Group</h2>
+        <div class="friend-form">
+            <div class="form-options">
+                <label for="groupOption">Choose an option:</label>
+                <select id="groupOption" class="drop-down" onchange="toggleGroupOptions()">
+                    <option value="select">Select</option>
+                    <option value="create">Create a group</option>
+                    <option value="join">Join an existing group</option>
+                </select>
+            </div>
+
+            <div id="createGroup" style="display: none;">
+                <label for="groupName">Group Name:</label>
+                <input type="text" id="groupName" placeholder="Enter group name">
+
+                <p class="group-code" id="groupID"></p>
+
+                <button onclick="createGroup()">Create Group</button>
+            </div>
+
+            <div id="joinGroup" style="display: none;">
+                <label for="groupIDInput">Enter Group ID:</label>
+                <input type="text" id="groupIDInput" placeholder="Group ID">
+                <button onclick="joinGroup()">Join Group</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleGroupOptions() {
+            var groupOption = document.getElementById("groupOption").value;
+            var createGroupDiv = document.getElementById("createGroup");
+            var joinGroupDiv = document.getElementById("joinGroup");
+
+            if (groupOption === "create") {
+                createGroupDiv.style.display = "block";
+                joinGroupDiv.style.display = "none";
+                document.getElementById("groupID").innerHTML = "You have created a group with Group Code: " + generateGroupCode();
+            } else {
+                createGroupDiv.style.display = "none";
+                joinGroupDiv.style.display = "block";
+                document.getElementById("groupID").innerHTML = "";
+            }
+        }
+
+        function joinGroup() {
+            var groupIDInput = document.getElementById("groupIDInput").value;
+            var groupIDParagraph = document.getElementById("groupID");
+            groupIDParagraph.innerHTML = "You have joined the group with Code: " + groupIDInput;
+        }
+
+        function createGroup() {
+            // Additional logic for creating a group can be added here
+            alert("Group created successfully!");
+        }
+
+        function generateGroupCode() {
+            // Simple example of generating a random group code
+            return Math.floor(Math.random() * 10000);
+        }
+    </script>
+</body>
+</html>
