@@ -18,7 +18,7 @@ class User(models.Model):
     name = models.CharField(max_length=255)
     phone_no = models.CharField(max_length=10, validators=[validators.MinLengthValidator(10)])
     email = models.EmailField()
-    pincode = models.ForeignKey(Pincode, on_delete=models.CASCADE)
+    pincode_id = models.IntegerField()
     monthly_budget = models.IntegerField()  # Modified to snake_case
     target_savings = models.IntegerField()  # Modified to snake_case
     allowed_expense = models.IntegerField()  # Modified to snake_case
