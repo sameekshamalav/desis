@@ -1,84 +1,77 @@
-from django.shortcuts import get_object_or_404, HttpResponse
-from rest_framework.authtoken.models import Token
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from .models import User, Expenses
-from .serializers import UserSerializer, ExpensesSerializer
-from django.contrib.auth import authenticate
+from django.shortcuts import render, redirect
+from .models import Expense
+from django.http import HttpResponse
+from django.db.models import Sum
 
-@api_view(['POST'])
-def login(request):
-    username = request.data.get('username')
-    password = request.data.get('password')
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        token, _ = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key})
-    else:
-        return Response({'error': 'Invalid credentials'}, status=400)
+# Create your views here.
+# home
+def home(request):
+    expenses = Expense.objects.all()
+    if request.POST:
+        month = request.POST['month']
+        year = request.POST['year']
+        expenses = Expense.objects.filter(date__year=year, date__month=month)
+    return render(request, 'index.html', {'expenses': expenses})
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_own_profile(request):
-    user = request.user
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
+# create
+def add(request):
+    if request.method == 'POST':
+        item = request.POST['item']
+        amount = request.POST['amount']
+        category = request.POST['category']
+        date = request.POST['date']
 
-@api_view(['GET'])
-def get_users(request):
-    users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
-    return HttpResponse(serializer.data)
+        expense = Expense(item=item, amount=amount, category=category, date=date)
+        expense.save()
 
-@api_view(['POST'])
-def create_user(request):
-    serializer = UserSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
+    return redirect(home)
 
-@api_view(['GET'])
-def get_user(request, pk):
-    user = get_object_or_404(User, pk=pk)
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
+def update(request, id):
+    id = int(id)
+    expense_fetched = Expense.objects.get(id = id)
+    if request.method == 'POST':
+        item = request.POST['item']
+        amount = request.POST['amount']
+        category = request.POST['category']
+        date = request.POST['date']
 
-@api_view(['PUT'])
-def update_user(request, pk):
-    user = get_object_or_404(User, pk=pk)
-    serializer = UserSerializer(user, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors, status=400)
+        expense_fetched.item = item
+        expense_fetched.amount = amount
+        expense_fetched.category = category
+        expense_fetched.date = date
 
-@api_view(['GET'])
-def get_expenses(request):
-    expenses = Expenses.objects.all()
-    serializer = ExpensesSerializer(expenses, many=True)
-    return Response(serializer.data)
+        expense_fetched.save()
 
-@api_view(['POST'])
-def create_expense(request):
-    serializer = ExpensesSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
+    return redirect(home)
 
-@api_view(['GET'])
-def get_expense(request, pk):
-    expense = get_object_or_404(Expenses, pk=pk)
-    serializer = ExpensesSerializer(expense)
-    return Response(serializer.data)
+def delete(request, id):
+    id = int(id)
+    expense_fetched = Expense.objects.get(id = id)
+    expense_fetched.delete()
+    return redirect(home)
 
-@api_view(['PUT'])
-def update_expense(request, pk):
-    expense = get_object_or_404(Expenses, pk=pk)
-    serializer = ExpensesSerializer(expense, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors, status=400)
+def expense_summary(request):
+    # Retrieve all expenses from the database
+    expenses = Expense.objects.all()
+
+    # Calculate total spending for each category
+    category_totals = expenses.values('category').annotate(total=Sum('amount'))
+
+    # Calculate total spending across all categories
+    total_spending = expenses.aggregate(total=Sum('amount'))['total']
+
+    # Calculate percentage spending for each category
+    category_percentages = {}
+    for category_total in category_totals:
+        category_percentages[category_total['category']] = (category_total['total'] / total_spending) * 100
+    
+    # Aggregate spending data based on dates
+    daily_spending_data = expenses.values('date').annotate(total=Sum('amount'))
+
+    context = {
+        'category_percentages': category_percentages,
+        'daily_spending_data': daily_spending_data
+    }
+    return render(request, 'expense_summary.html', context)
+
+    

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Summary</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div style="width: 100%; float: left;">
+        <canvas id="pieChart" width="300" height="300"></canvas>
+    </div>
+<br>
+<br>
+    <div style="width: 100%; float: right;">
+        <canvas id="lineChart" width="10" height="400"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [
+                    {% for category, percentage in category_percentages.items %}
+                        "{{ category }}",
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Percentage Spending',
+                    data: [
+                        {% for category, percentage in category_percentages.items %}
+                            {{ percentage }},
+                        {% endfor %}
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)', // Red
+                        'rgba(54, 162, 235, 0.5)', // Blue
+                        'rgba(255, 206, 86, 0.5)', // Yellow
+                        // Add more colors if you have more categories
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        // Add more colors if you have more categories
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'left',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Percentage Spending by Category'
+                    }
+                }
+            }
+        }
+        );
+        var ctxLine = document.getElementById('lineChart').getContext('2d');
+        var dailySpendingData = {
+            labels: [
+                {% for data in daily_spending_data %}
+                    "{{ data.date|date:'Y-m-d' }}",
+                {% endfor %}
+            ],
+            datasets: [{
+                label: 'Daily Spending',
+                data: [
+                    {% for data in daily_spending_data %}
+                        {{ data.total }},
+                    {% endfor %}
+                ],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+        var lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: dailySpendingData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Daily Spending'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

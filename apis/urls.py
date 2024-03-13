@@ -1,8 +1,10 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
-    path('user/', views.create_user, name='create_user')
+    path('', views.home, name = 'index'),
+    path('add', views.add, name = 'add'),
+    path('update/<int:id>', views.update, name = 'update'),
+    path('delete/<int:id>', views.delete, name = 'delete'),
+    path('summary', views.expense_summary, name = 'summary')
 ]
