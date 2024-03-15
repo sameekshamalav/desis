@@ -3,16 +3,24 @@
 <head>
     <title>Expense Summary</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        .chart-container {
+            display: inline-block;
+            width: 45%;
+            margin: 20px;
+            vertical-align: top;
+        }
+    </style>
 </head>
 <body>
-    <div style="width: 100%; float: left;">
+    <div class="chart-container">
         <canvas id="pieChart" width="300" height="300"></canvas>
     </div>
-<br>
-<br>
-    <div style="width: 100%; float: right;">
-        <canvas id="lineChart" width="10" height="400"></canvas>
+
+    <div class="chart-container">
+        <canvas id="lineChart" width="400" height="300"></canvas>
     </div>
+
     <script>
         var ctx = document.getElementById('pieChart').getContext('2d');
         var pieChart = new Chart(ctx, {
@@ -58,8 +66,8 @@
                     }
                 }
             }
-        }
-        );
+        });
+
         var ctxLine = document.getElementById('lineChart').getContext('2d');
         var dailySpendingData = {
             labels: [
@@ -79,6 +87,7 @@
                 tension: 0.1
             }]
         };
+
         var lineChart = new Chart(ctxLine, {
             type: 'line',
             data: dailySpendingData,
@@ -87,7 +96,7 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        position: 'right',
                     },
                     title: {
                         display: true,
