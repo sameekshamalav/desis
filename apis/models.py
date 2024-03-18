@@ -7,6 +7,21 @@ class Expense(models.Model):
     category = models.CharField(max_length=50)
     date = models.DateField()
 
+
+class MailExpense(models.Model):
+    id = models.AutoField(primary_key=True)
+    # user_id = models.CharField(max_length=255)
+    amount = models.PositiveIntegerField()
+    item = models.TextField()
+    category = models.TextField()
+    date_of_purchase = models.DateTimeField()
+    platform = models.TextField(default="self")
+    status = models.TextField()
+    order_id = models.TextField()
+    feedback = models.TextField()
+
+
+# User key to identify for which user the expense is added
     def __str__(self):
         return self.item
     class Meta:
@@ -34,3 +49,15 @@ class UserStatus(models.Model):
     
     class Meta:
         db_table = 'user_status'
+
+
+class Email(models.Model):
+    id = models.AutoField(primary_key=True)
+    # user_id = models.CharField(max_length=255)
+    sender = models.CharField(max_length=255)
+    subject = models.CharField(max_length=255)
+    body = models.TextField()
+    received_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.subject} - {self.sender}'

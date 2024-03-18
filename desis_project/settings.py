@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-7wfvd4x)9oky+y5s*7ue_6%s8c#qy8v1hr9yz_v01k767yvgle
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apis'
+    'apis',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'expensetracker',
         'USER': 'root',
-        'PASSWORD': 'ENTER YOUR PASSWORD HERE',
+        'PASSWORD': 'Growth@5678',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
@@ -129,3 +130,28 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# Celery Configuration
+# Example Redis URL, replace with your own
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+# Additional Celery settings can go here...
+
+
+# Celery Beat Configuration
+CELERY_BEAT_SCHEDULE = {
+    'process-emails-every-300-seconds': {
+        'task': 'apis.tasks.process_emails',  # Task to run
+        'schedule': 300.0,  # Run every 300 seconds
+    },
+}
+
