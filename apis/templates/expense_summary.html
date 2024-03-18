@@ -13,6 +13,15 @@
     </style>
 </head>
 <body>
+    <h1>User Status</h1>
+    <p>User ID: {{ user_status.user_id }}</p>
+    <p>Total Expenses: {{ user_status.total_expenses }}</p>
+    <p>Last Updated: {{ user_status.last_updated }}</p>
+    <p>Allowed Expense: {{ user_status.allowedexpense }}</p>
+    <p>Monthly Budget: {{ user_status.monthlybudget }}</p>
+    <p>Score: {{ user_status.score }}</p>
+    <p>Current Balance: {{ user_status.currentbalance }}</p>
+    <p>Pincode: {{ user_status.pincode }}</p>
     <div class="chart-container">
         <canvas id="pieChart" width="300" height="300"></canvas>
     </div>
