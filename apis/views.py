@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Expense
 from django.http import HttpResponse
 from django.db.models import Sum
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 # home
@@ -14,6 +15,7 @@ def home(request):
     return render(request, 'index.html', {'expenses': expenses})
 
 # create
+@csrf_exempt
 def add(request):
     if request.method == 'POST':
         item = request.POST['item']
