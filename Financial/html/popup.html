@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense</title>
+    <!-- Bootstrap CSS -->
+    
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" 
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+</head>
+<body>
+
+<!-- Add Expense Modal -->
+<!-- Add Expense Modal -->
+<div id="addExpenseModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addExpenseForm">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Expense</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Item</label>
+                        <input class="form-control" type="text" id="item" name="item" placeholder="Enter the item" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input class="form-control" type="text" id="amount" name="amount" placeholder="Enter the amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" id="category" name="category" required>
+                            <option value="" selected disabled hidden>Choose the category</option>
+                            <option value="food">Food</option>
+                            <option value="clothes">Clothes</option>
+                            <option value="travel">Travel</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+                    <div id="message"></div> <!-- For displaying success or error messages -->
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="button" id="submitExpense" class="btn btn-success" value="Add Expense">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
