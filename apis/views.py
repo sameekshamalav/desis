@@ -26,10 +26,10 @@ def add(request):
         expense = Expense(item=item, amount=amount, category=category, date=date)
         expense.save()
 
-        # Update total_expenses for the user
-        user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
-        user_status.total_expenses += amount
-        user_status.save()
+        # # Update total_expenses for the user
+        # user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
+        # user_status.total_expenses += amount
+        # user_status.save()
 
     return redirect(home)
 
@@ -52,9 +52,12 @@ def add_user_status(request):
 def update(request, id):
     id = int(id)
     expense_fetched = Expense.objects.get(id = id)
+    # user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
+    # user_status.total_expenses -= expense_fetched.amount
+    
     if request.method == 'POST':
         item = request.POST['item']
-        amount = request.POST['amount']
+        amount = int(request.POST['amount'])
         category = request.POST['category']
         date = request.POST['date']
 
@@ -62,7 +65,8 @@ def update(request, id):
         expense_fetched.amount = amount
         expense_fetched.category = category
         expense_fetched.date = date
-
+        # user_status.total_expenses+=amount
+        # user_status.save()
         expense_fetched.save()
 
     return redirect(home)
@@ -70,7 +74,11 @@ def update(request, id):
 def delete(request, id):
     id = int(id)
     expense_fetched = Expense.objects.get(id = id)
+    # user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
+    # user_status.total_expenses -= expense_fetched.amount
+    # user_status.save()
     expense_fetched.delete()
+    
     return redirect(home)
 
 def expense_summary(request):
