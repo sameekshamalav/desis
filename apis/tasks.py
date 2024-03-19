@@ -125,77 +125,94 @@ import re
 from datetime import datetime, timedelta
 from apis.models import Email, MailExpense, UserStatus
 
+
 import json
 import google.generativeai as genai 
 from desis_project import celery
 from celery import shared_task
+from django.utils import timezone
 
 genai.configure(api_key="AIzaSyCvKJkmaRe-mSDEiz-biZS-xT2jkjGY9RU")
 model = genai.GenerativeModel('gemini-pro')
 
 @shared_task
-def process_emails(username, password):
-    username = UserStatus.gmail
-    password= UserStatus.app_password
-    try:
-        mail = imaplib.IMAP4_SSL('imap.gmail.com')
-        mail.login(username, password)
+def process_emails(username="", password=""):
+    print("ok")
+    users = list(UserStatus.objects.all())
+    for user in users:
+        username = user.gmail
+        password= user.app_password
+        print(password)
 
-        five_minutes_ago = datetime.now() - timedelta(minutes=5)
-        date_five_minutes_ago = five_minutes_ago.strftime('%d-%b-%Y')
-        mail.select('inbox')
-        _, data = mail.search(None, f'(SINCE "{date_five_minutes_ago}")')
-        email_ids = data[0].split()
-        emails = []
-        for email_id in email_ids:
-            _, data = mail.fetch(email_id, '(RFC822)')
-            emails.append(data[0][1])
+        try:
+            mail = imaplib.IMAP4_SSL('imap.gmail.com')
+            mail.login(username, password)
 
-        order_emails = []
-        for email_content in emails:
-            try:
-                msg = email.message_from_bytes(email_content)
-                sender = msg['From']
-                subject = msg['Subject']
-                body = ""
-                if msg.is_multipart():
-                    for part in msg.walk():
-                        if part.get_content_type() == "text/plain":
-                            body += part.get_payload(decode=True).decode()
-                else:
-                    body = msg.get_payload(decode=True).decode()
-                
-                if re.search(r'(order\s+(summary|confirmation)|order\s+placed)', subject, re.IGNORECASE) or \
-                    re.search(r'(order\s+(summary|confirmation)|order\s+placed)', body, re.IGNORECASE):
-                    order_emails.append({"sender": sender, "subject": subject, "body": body})
-            except Exception as e:
-                print(f"Error processing email: {str(e)}")
+            five_minutes_ago = datetime.now() - timedelta(minutes=5)
+            date_five_minutes_ago = five_minutes_ago.strftime('%d-%b-%Y')
+            mail.select('inbox')
+            _, data = mail.search(None, f'(SINCE "{date_five_minutes_ago}")')
+            email_ids = data[0].split()
+            emails = []
+            for email_id in email_ids:
+                _, data = mail.fetch(email_id, '(RFC822)')
+                emails.append(data[0][1])
 
-        for email_data in order_emails:
-            gemini_prompt = '''the Gemini will give me the user_id (same as given above) , Sender_platform (the ecommerce platform name from where the order has been place: can be decoded by the senders email) ,sender_icon (a code to decode the e-commerce platform from the sender email and then in the table insert their respective icon) , order_id ( any id/number that is given in the email as an order id) , the product name ( identity the name of the product from the mail body if not identified any then save as ITEM) , category ( try to classify the type of product as in a category , like electronics ,clothes ,homeware etc, If the product name is ITEM or not able to classify the product then save as OTHER) , amount ( identify the total amount of the order from the email body, generally the max amount followed by the symbol Rs. ) , date/time ( date/time of the order placed) , status ( whether the order is confirmed, delivered, returned, also if the Gemini finds a email with same email order, then without adding a new row, only update this status )  , feedback ( if there is a link in the body asking the user to give the feedback , then upload that link in this column , if nothing is given then keep it empty )  
+            order_emails = []
+            for email_content in emails:
+                try:
+                    msg = email.message_from_bytes(email_content)
+                    sender = msg['From']
+                    subject = msg['Subject']
+                    body = ""
+                    if msg.is_multipart():
+                        for part in msg.walk():
+                            if part.get_content_type() == "text/plain":
+                                body += part.get_payload(decode=True).decode()
+                    else:
+                        body = msg.get_payload(decode=True).decode()
+                    
+                    if re.search(r'(order\s+(summary|confirmation)|order\s+placed)', subject, re.IGNORECASE) or \
+                        re.search(r'(order\s+(summary|confirmation)|order\s+placed)', body, re.IGNORECASE):
+                        order_emails.append({"sender": sender, "subject": subject, "body": body})
+                except Exception as e:
+                    print(f"Error processing email: {str(e)}")
 
-If the email body includes a cart order, then divide that cart into individual product items and then add that data in the new table in the same format as given above. on '''+f"{email_data['sender']},{email_data['subject']},{email_data['body']}"
-            response = model.generate_content(gemini_prompt)
-            order_info = response.text.split("|")
-            
-            MailExpense.objects.create(
-                amount=float(order_info[7]),  
-                item=order_info[5],  
-                category=order_info[6],  
-                date_of_purchase=datetime.now(),  
-                platform=email_data['sender'].split('@')[1].split('.')[0],  
-                status=order_info[9],  
-                order_id=order_info[4],  
-                feedback=order_info[10],  
-            )
+                    print('order emails')
+          
+            for email_data in order_emails:
+                gemini_prompt = '''the Gemini will give me the user_id (same as given above) , Sender_platform (the ecommerce platform name from where the order has been place: can be decoded by the senders email) ,sender_icon (a code to decode the e-commerce platform from the sender email and then in the table insert their respective icon) , order_id ( any id/number that is given in the email as an order id) , the product name ( identity the name of the product from the mail body if not identified any then save as ITEM) , category ( try to classify the type of product as in a category , like electronics ,clothes ,homeware etc, If the product name is ITEM or not able to classify the product then save as OTHER) , amount ( identify the total amount of the order from the email body, generally the max amount followed by the symbol Rs. ) , date/time ( date/time of the order placed) , status ( whether the order is confirmed, delivered, returned, also if the Gemini finds a email with same email order, then without adding a new row, only update this status )  , feedback ( if there is a link in the body asking the user to give the feedback , then upload that link in this column , if nothing is given then keep it empty )  
 
-            Email.objects.create(
-                sender=email_data['sender'],
-                subject=email_data['subject'],
-                body=email_data['body'],
-                received_at=datetime.now()
-            )
+    If the email body includes a cart order, then divide that cart into individual product items and then add that data in the new table in the same format as given above. on '''+f"{email_data['sender']},{email_data['subject']},{email_data['body']}"
+                response = model.generate_content(gemini_prompt)
+                order_info = response.text.split("|")
+                print(order_info)
+                MailExpense.objects.create(
+                    amount=float(order_info[7]),  
+                    item=order_info[5],  
+                    category=order_info[6],  
+                    date_of_purchase=datetime.now(),  
+                    platform=email_data['sender'].split('@')[1].split('.')[0],  
+                    status=order_info[9],  
+                    order_id=order_info[4],  
+                    feedback=order_info[10],  
+                )
 
-        return "Email processing completed successfully"
-    except Exception as e:
-        return f"Error processing emails: {str(e)}"
+                # Email.objects.create(
+                #     sender=email_data['sender'],
+                #     subject=email_data['subject'],
+                #     body=email_data['body'],
+                #     received_at=datetime.now()
+                # )
+                email_data.delete()
+
+            return "Email processing completed successfully"
+        except Exception as e:
+            return f"Error processing emails: {str(e)}"
+    
+@shared_task(bind=True, name="desis.apis.tasks.process_emails", ignore_result=True)
+def run_process_emails_periodically(self):
+    print("I am triggred")
+    process_emails.delay()
+
+run_process_emails_periodically.apply_async((), countdown=60)

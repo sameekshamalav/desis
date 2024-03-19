@@ -6,6 +6,7 @@ from .models import MailExpense, Expense
 @receiver(post_save, sender=MailExpense)
 def create_expense_from_mailexpense(sender, instance, created, **kwargs):
     if created:
+        print('added')
         Expense.objects.create(
             item=instance.item,
             amount=instance.amount,

@@ -151,7 +151,7 @@ CELERY_TIMEZONE = 'UTC'
 CELERY_BEAT_SCHEDULE = {
     'process-emails-every-300-seconds': {
         'task': 'apis.tasks.process_emails',  # Task to run
-        'schedule': 300.0,  # Run every 300 seconds
+        'schedule': 30.0,  # Run every 300 seconds
     },
 }
 
