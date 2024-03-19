@@ -9,4 +9,5 @@ urlpatterns = [
     path('summary', views.expense_summary, name = 'summary'),
     path('add_user_status', views.add_user_status, name = 'add_user_status'),
     path('chatbot', views.chatbot_view, name = 'chatbot')
+    path('process-emails/', views.process_emails_view, name='process_emails'),
 ]

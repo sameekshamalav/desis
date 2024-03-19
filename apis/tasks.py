@@ -8,9 +8,6 @@
 # import google.generativeai as genai 
 # from celery import shared_task
 
-
-
-
 # genai.configure(api_key="AIzaSyCvKJkmaRe-mSDEiz-biZS-xT2jkjGY9RU")
 # model = genai.GenerativeModel('gemini-pro')
 
@@ -126,18 +123,20 @@ import imaplib
 import email
 import re
 from datetime import datetime, timedelta
-from apis.models import Email, MailExpense
+from apis.models import Email, MailExpense, UserStatus
 
 import json
 import google.generativeai as genai 
 from desis_project import celery
 from celery import shared_task
 
-genai.configure(api_key="YOUR_API_KEY")
+genai.configure(api_key="AIzaSyCvKJkmaRe-mSDEiz-biZS-xT2jkjGY9RU")
 model = genai.GenerativeModel('gemini-pro')
 
 @shared_task
 def process_emails(username, password):
+    username = UserStatus.gmail
+    password= UserStatus.app_password
     try:
         mail = imaplib.IMAP4_SSL('imap.gmail.com')
         mail.login(username, password)

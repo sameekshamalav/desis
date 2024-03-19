@@ -30,11 +30,15 @@ class MailExpense(models.Model):
 
 class UserStatus(models.Model):
     user_id = models.IntegerField(primary_key=True)
+    user_name =models.CharField(max_length=100)
     total_expenses = models.IntegerField(default=0)
+    number_of_expenses =models.IntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     allowedexpense = models.IntegerField(default=0)
     monthlybudget = models.IntegerField(default=0)
     pincode = models.IntegerField(null=True)  # Assuming pincode can be nullable
+    gmail = models.CharField(max_length = 50)
+    app_password = models.CharField(max_length = 50)
 
     @property
     def score(self):

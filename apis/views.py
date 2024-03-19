@@ -5,6 +5,9 @@ from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 from openai import ChatCompletion
 import openai,requests
+from django.http import JsonResponse
+from .tasks import process_emails
+
 # Create your views here.
 global conversation
 info_string=""
@@ -126,3 +129,14 @@ def expense_summary(request):
     return render(request, 'expense_summary.html', context)
 
     
+    
+def process_emails_view(request):
+    # Assuming you're passing username and password in the request
+    username = request.POST.get('gmail')  # Ensure you have a form or other means to get this data
+    password = request.POST.get('app_password')  # Ensure you have a form or other means to get this data
+    
+    # Assuming you're using Celery for background task execution
+    # Trigger the Celery task
+    result = process_emails.delay(username, password)
+    
+    return JsonResponse({'task_id': result.id}, status=202)
