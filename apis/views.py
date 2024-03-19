@@ -131,12 +131,15 @@ def expense_summary(request):
     
     
 def process_emails_view(request):
-    # Assuming you're passing username and password in the request
-    username = request.POST.get('gmail')  # Ensure you have a form or other means to get this data
-    password = request.POST.get('app_password')  # Ensure you have a form or other means to get this data
-    
-    # Assuming you're using Celery for background task execution
-    # Trigger the Celery task
-    result = process_emails.delay(username, password)
-    
-    return JsonResponse({'task_id': result.id}, status=202)
+    if request.method == 'POST':
+        # Assuming username and password are passed in the request
+        username = request.POST.get('gmail')
+        password = request.POST.get('app_password')
+        # request.POST.get('password')
+
+        # Trigger the Celery task
+        process_emails.delay(username, password)
+
+        return JsonResponse({'message': 'Email processing started successfully.'},status=200)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed.'}, status=400)
