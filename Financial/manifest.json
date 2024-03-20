@@ -1,33 +1,33 @@
 {
-    "manifest_version": 3,
-    "name": "Finance App",
-    "version": "1.0.0",
-    "description": "Finance",
-    "action": {
-      "default_popup": "/html/popup.html"
-    },
-    "content_scripts": [
+  "manifest_version": 3,
+  "name": "Finance App",
+  "version": "1.0.0",
+  "description": "Finance",
+  "action": {
+    "default_popup": "/html/popup.html"
+  },
+  "content_scripts": [
+    {
+        "matches": ["*://*.amazon.com/*", "*://*.flipkart.com/*", "*://*.myntra.com/*", "*://*.zomato.com/*", "*://*.swiggy.com/*"],
+        "js": ["inject.js"],
+        "runAt": "document_end"
+    }
+],
+  "permissions": ["sidePanel", "contextMenus","tabs","webNavigation","activeTab"],
+  "background": {
+    "service_worker": "serviceWorker.js"
+  },
+  
+    "web_accessible_resources": [
       {
-          "matches": ["*://*.google.com/*"],
-          "js": ["inject.js"],
-          "runAt": "document_end"
+        "resources": ["scripts/popup.js", "css/styles.css", "js/scripts.js","inject.js"],
+        "matches": [
+          "*://*/*"
+      ]
+        
       }
-  ],
-    "permissions": ["sidePanel", "contextMenus","tabs","webNavigation","activeTab"],
-    "background": {
-      "service_worker": "serviceWorker.js"
-    },
-    
-      "web_accessible_resources": [
-        {
-          "resources": ["scripts/popup.js", "css/styles.css", "js/scripts.js","inject.js"],
-          "matches": [
-            "*://*/*"
-        ]
-          
-        }
-      ],
-    
-    "host_permissions": ["<all_urls>","http://127.0.0.1:8000/*"]
-    
-  }
+    ],
+  
+  "host_permissions": ["<all_urls>","http://127.0.0.1:8000/*"]
+  
+}
