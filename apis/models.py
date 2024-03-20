@@ -57,7 +57,8 @@ class UserStatus(models.Model):
 
 class Email(models.Model):
     id = models.AutoField(primary_key=True)
-    # user_id = models.CharField(max_length=255)
+    email_id=models.CharField(max_length=255, default ='')
+    user_id = models.ForeignKey(UserStatus, on_delete=models.CASCADE) # user_id = models.CharField(max_length=255)
     sender = models.CharField(max_length=255)
     subject = models.CharField(max_length=255)
     body = models.TextField()
@@ -65,3 +66,27 @@ class Email(models.Model):
 
     def __str__(self):
         return f'{self.subject} - {self.sender}'
+    class Meta:
+        db_table = 'expense'
+
+
+
+class MailExpense(models.Model):
+    
+    id = models.AutoField(primary_key=True)
+    # user_id = models.CharField(max_length=255)
+    user_id = models.ForeignKey(UserStatus, on_delete=models.CASCADE)
+    amount = models.PositiveIntegerField()
+    item = models.TextField()
+    category = models.TextField()
+    date_of_purchase = models.DateTimeField()
+    platform = models.TextField(default="self")
+    status = models.TextField()
+    order_id = models.TextField()
+    feedback = models.TextField()
+
+
+    
+# User key to identify for which user the expense is added
+    def __str__(self):       return self.item
+

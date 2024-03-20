@@ -19,6 +19,8 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 # You can also manually specify the tasks modules to load like this:
 # app.autodiscover_tasks(['myapp1', 'myapp2'])
 
-@app.task(bind=True)
-def debug_task(self):
-    print('Request: {0!r}'.format(self.request))
+# @app.task(bind=True)
+# def debug_task(self):
+#     print('Request: {0!r}'.format(self.request))
+
+app.log.setup(logfile='celery.log', loglevel='INFO')

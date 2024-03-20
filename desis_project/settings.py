@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apis',
+    'apis.apps.ApisConfig',
     'django_celery_beat',
 ]
 
@@ -135,8 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 
 # Celery Configuration
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://localhost:6379/'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
 # Celery Configuration
 # Example Redis URL, replace with your own
 CELERY_ACCEPT_CONTENT = ['json']
@@ -149,9 +150,9 @@ CELERY_TIMEZONE = 'UTC'
 
 # Celery Beat Configuration
 CELERY_BEAT_SCHEDULE = {
-    'process-emails-every-300-seconds': {
-        'task': 'apis.tasks.process_emails',  # Task to run
-        'schedule': 30.0,  # Run every 300 seconds
+    'process-emails-every-5-minutes': {
+        'task': 'desis.apis.tasks.process_emails',
+        'schedule': timedelta(seconds=10),  # Run every 5 minutes
     },
 }
 

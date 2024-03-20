@@ -1,0 +1,962 @@
+[2024-03-20 17:11:32,437: INFO/MainProcess] beat: Starting...
+[2024-03-20 17:11:32,589: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 17:13:32,549: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 17:15:32,560: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 17:17:32,567: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 17:18:32,373: INFO/MainProcess] beat: Starting...
+[2024-03-20 17:18:53,610: INFO/MainProcess] beat: Starting...
+[2024-03-20 17:19:32,584: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 17:21:32,579: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 17:23:32,582: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:29:14,564: WARNING/MainProcess] C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\worker\consumer\consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-03-20 19:29:14,611: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2024-03-20 19:29:14,611: WARNING/MainProcess] C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\worker\consumer\consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-03-20 19:29:14,642: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-20 19:29:14,720: INFO/SpawnPoolWorker-1] child process 31664 calling self.run()
+[2024-03-20 19:29:14,814: INFO/SpawnPoolWorker-2] child process 24748 calling self.run()
+[2024-03-20 19:29:14,892: INFO/SpawnPoolWorker-3] child process 23972 calling self.run()
+[2024-03-20 19:29:15,002: INFO/SpawnPoolWorker-4] child process 14904 calling self.run()
+[2024-03-20 19:29:15,066: INFO/SpawnPoolWorker-5] child process 12368 calling self.run()
+[2024-03-20 19:29:15,113: INFO/SpawnPoolWorker-6] child process 28224 calling self.run()
+[2024-03-20 19:29:15,175: INFO/SpawnPoolWorker-8] child process 26064 calling self.run()
+[2024-03-20 19:29:15,175: INFO/SpawnPoolWorker-7] child process 24040 calling self.run()
+[2024-03-20 19:29:15,316: INFO/SpawnPoolWorker-9] child process 27676 calling self.run()
+[2024-03-20 19:29:15,473: INFO/SpawnPoolWorker-10] child process 24232 calling self.run()
+[2024-03-20 19:29:15,520: INFO/SpawnPoolWorker-11] child process 22432 calling self.run()
+[2024-03-20 19:29:15,552: INFO/SpawnPoolWorker-12] child process 28020 calling self.run()
+[2024-03-20 19:29:15,725: INFO/MainProcess] mingle: all alone
+[2024-03-20 19:29:15,883: INFO/MainProcess] celery@DESKTOP-KN9IJMQ ready.
+[2024-03-20 19:29:15,898: INFO/MainProcess] Task apis.tasks.process_emails[da4cd88e-4bf5-4d89-bf8f-805cbd46ac16] received
+[2024-03-20 19:29:15,898: INFO/MainProcess] Task apis.tasks.process_emails[e897bc5e-d04c-4c94-90bd-63a364b9a2bd] received
+[2024-03-20 19:29:15,898: INFO/MainProcess] Task apis.tasks.process_emails[94876c92-075a-4401-b903-8feb24758a14] received
+[2024-03-20 19:29:15,914: INFO/MainProcess] Task apis.tasks.process_emails[35559c64-b4c1-47c3-bcd2-d3cf3cd6cba8] received
+[2024-03-20 19:29:15,918: INFO/MainProcess] Task apis.tasks.process_emails[39783431-6ffd-443c-8e3c-fca49a89a37f] received
+[2024-03-20 19:29:15,930: INFO/MainProcess] Task apis.tasks.process_emails[3a2a0673-1e95-446b-a5fb-89756bfbe63b] received
+[2024-03-20 19:29:15,930: INFO/MainProcess] Task apis.tasks.process_emails[a1e88973-5eb5-457c-80ad-a7e4548ab753] received
+[2024-03-20 19:29:15,930: INFO/MainProcess] Task apis.tasks.process_emails[ef422f2e-2b77-453b-a4a9-78666cb27fb4] received
+[2024-03-20 19:29:15,945: INFO/MainProcess] Task apis.tasks.process_emails[480ec1f7-e790-4da5-b401-1cfbbe23dbb6] received
+[2024-03-20 19:29:15,945: INFO/MainProcess] Task apis.tasks.process_emails[86952cb1-181d-419e-a3c7-171fdfb61618] received
+[2024-03-20 19:29:15,945: INFO/MainProcess] Task apis.tasks.process_emails[41204fbd-4b07-44f6-9aae-e78a2745b034] received
+[2024-03-20 19:29:15,961: INFO/MainProcess] Task apis.tasks.process_emails[64853717-b6df-430b-ae75-111b502e2c0f] received
+[2024-03-20 19:29:16,647: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,665: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,665: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,665: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,665: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,687: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,691: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,694: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,698: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,701: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,704: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:16,708: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:29:25,931: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:29:26,008: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:29:26,030: INFO/MainProcess] Task apis.tasks.process_emails[3395155f-5970-46bf-8881-fae1f4987121] received
+[2024-03-20 19:29:26,031: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:31:26,014: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:31:26,014: INFO/MainProcess] Task apis.tasks.process_emails[f8750744-25f6-47f1-8a1c-f4f9be98a76f] received
+[2024-03-20 19:31:26,014: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:33:26,016: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:33:26,021: INFO/MainProcess] Task apis.tasks.process_emails[fd87f526-08de-477e-a6ea-814863ffe57f] received
+[2024-03-20 19:33:26,028: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:35:26,031: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:35:26,031: INFO/MainProcess] Task apis.tasks.process_emails[9deadd8a-1f1e-4078-a37a-a25c9a3af543] received
+[2024-03-20 19:35:26,031: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:36:17,134: ERROR/MainProcess] Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x0000020B0A5D3B90>> raised: ImportError("cannot import name 'process_emails' from 'apis.tasks' (C:\\Users\\AASHI JAIN\\Desktop\\desis\\apis\\tasks.py)")
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\fixups\django.py", line 97, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\fixups\django.py", line 137, in validate_models
+    run_checks()
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\core\checks\urls.py", line 42, in check_url_namespaces_unique
+    all_namespaces = _load_all_namespaces(resolver)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\core\checks\urls.py", line 61, in _load_all_namespaces
+    url_patterns = getattr(resolver, "url_patterns", [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\urls\resolvers.py", line 738, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\urls\resolvers.py", line 731, in urlconf_module
+    return import_module(self.urlconf_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\AASHI JAIN\Desktop\desis\desis_project\urls.py", line 22, in <module>
+    path('', include('apis.urls'))
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\urls\conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\AASHI JAIN\Desktop\desis\apis\urls.py", line 2, in <module>
+    from . import views
+  File "C:\Users\AASHI JAIN\Desktop\desis\apis\views.py", line 7, in <module>
+    from .tasks import process_emails
+ImportError: cannot import name 'process_emails' from 'apis.tasks' (C:\Users\AASHI JAIN\Desktop\desis\apis\tasks.py)
+[2024-03-20 19:36:38,894: ERROR/MainProcess] Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x00000120B0DD3B60>> raised: ImportError("cannot import name 'process_emails' from 'apis.tasks' (C:\\Users\\AASHI JAIN\\Desktop\\desis\\apis\\tasks.py)")
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\fixups\django.py", line 97, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\fixups\django.py", line 137, in validate_models
+    run_checks()
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\core\checks\urls.py", line 42, in check_url_namespaces_unique
+    all_namespaces = _load_all_namespaces(resolver)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\core\checks\urls.py", line 61, in _load_all_namespaces
+    url_patterns = getattr(resolver, "url_patterns", [])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\urls\resolvers.py", line 738, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\urls\resolvers.py", line 731, in urlconf_module
+    return import_module(self.urlconf_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\AASHI JAIN\Desktop\desis\desis_project\urls.py", line 22, in <module>
+    path('', include('apis.urls'))
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\django\urls\conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.752.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\AASHI JAIN\Desktop\desis\apis\urls.py", line 2, in <module>
+    from . import views
+  File "C:\Users\AASHI JAIN\Desktop\desis\apis\views.py", line 7, in <module>
+    from .tasks import process_emails
+ImportError: cannot import name 'process_emails' from 'apis.tasks' (C:\Users\AASHI JAIN\Desktop\desis\apis\tasks.py)
+[2024-03-20 19:36:57,828: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:37:26,042: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:37:26,058: INFO/MainProcess] Task apis.tasks.process_emails[62706969-3c9a-4f49-b40c-ca128f51f97b] received
+[2024-03-20 19:37:26,058: ERROR/MainProcess] Task handler raised error: ValueError('not enough values to unpack (expected 3, got 0)')
+billiard.einfo.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\billiard\pool.py", line 361, in workloop
+    result = (True, prepare_result(fun(*args, **kwargs)))
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\app\trace.py", line 664, in fast_trace_task
+    tasks, accept, hostname = _loc
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 0)
+[2024-03-20 19:38:11,914: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:39:12,878: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:39:26,048: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.process_emails)
+[2024-03-20 19:40:03,836: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:40:03,906: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:40:15,905: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:40:27,905: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:40:39,921: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:40:51,935: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:41:03,942: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:41:15,943: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:41:27,949: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:41:39,953: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:41:51,954: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:42:03,957: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:42:15,966: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:42:27,968: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:42:39,969: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:42:51,980: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:43:03,981: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:43:15,982: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:43:27,985: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:43:39,992: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:43:51,996: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:44:04,000: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:44:16,013: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:44:28,014: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:44:32,938: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:44:40,021: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:45:03,040: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:45:03,072: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:45:15,069: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:45:27,078: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:45:39,089: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:45:51,100: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:03,102: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:15,102: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:27,110: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:32,186: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:46:32,217: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:33,222: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:34,225: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:35,230: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:36,230: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:37,232: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:38,232: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:39,233: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:40,233: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:41,234: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:42,243: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:43,248: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:44,261: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:45,265: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:46,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:47,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:48,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:49,267: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:50,268: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:51,268: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:52,269: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:53,275: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:54,275: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:55,282: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:56,283: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:57,296: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:58,299: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:46:59,303: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:00,306: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:01,306: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:02,307: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:03,307: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:04,309: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:05,315: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:06,316: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:07,317: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:08,318: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:09,319: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:10,319: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:11,319: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:12,320: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:13,320: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:14,321: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:15,331: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:16,332: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:17,333: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:18,334: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:19,347: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:20,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:21,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:22,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:23,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:24,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:25,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:26,351: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:27,351: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:28,352: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:29,352: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:30,353: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:31,353: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:32,353: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:33,363: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:34,364: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:35,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:36,378: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:37,392: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:38,392: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:39,393: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:40,398: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:41,398: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:42,398: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:43,399: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:47:46,109: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:48:43,406: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:49:43,418: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:50:43,420: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:51:43,422: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:52:43,433: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:53:06,912: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:53:43,451: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis_project.apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:54:44,562: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:54:44,613: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:55:44,607: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:56:42,150: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:56:44,624: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:57:12,539: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:57:44,632: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.run_process_emails_periodically)
+[2024-03-20 19:59:58,605: INFO/MainProcess] beat: Starting...
+[2024-03-20 19:59:58,645: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.run_process_emails_periodically)
+[2024-03-20 20:00:16,625: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:00:58,636: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (apis.tasks.run_process_emails_periodically)
+[2024-03-20 20:01:41,419: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:01:58,641: INFO/MainProcess] Scheduler: Sending due task process-emails-every-120-seconds (desis.apis.tasks.run_process_emails_periodically)
+[2024-03-20 20:02:34,972: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:02:42,261: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:03:27,346: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:03:51,130: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:03:51,178: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:04:53,502: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:04:53,550: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:07:53,804: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:07:57,928: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 2.0 seconds...
+[2024-03-20 20:08:04,010: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 4.0 seconds...
+[2024-03-20 20:08:12,085: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 6.0 seconds...
+[2024-03-20 20:08:22,158: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 8.0 seconds...
+[2024-03-20 20:08:34,222: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 10.0 seconds...
+[2024-03-20 20:08:48,275: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 12.0 seconds...
+[2024-03-20 20:09:04,370: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 14.0 seconds...
+[2024-03-20 20:09:22,454: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 16.0 seconds...
+[2024-03-20 20:09:42,555: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 18.0 seconds...
+[2024-03-20 20:10:04,644: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 20.0 seconds...
+[2024-03-20 20:10:28,767: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 22.0 seconds...
+[2024-03-20 20:10:54,860: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 24.0 seconds...
+[2024-03-20 20:11:22,979: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 26.0 seconds...
+[2024-03-20 20:11:53,053: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 28.0 seconds...
+[2024-03-20 20:12:25,155: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 30.0 seconds...
+[2024-03-20 20:12:59,271: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 32.0 seconds...
+[2024-03-20 20:13:35,376: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 32.0 seconds...
+[2024-03-20 20:14:11,487: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 32.0 seconds...
+[2024-03-20 20:14:47,600: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 32.0 seconds...
+[2024-03-20 20:15:23,687: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 32.0 seconds...
+[2024-03-20 20:15:59,794: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 32.0 seconds...
+[2024-03-20 20:16:11,318: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:16:15,449: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 2.0 seconds...
+[2024-03-20 20:16:21,548: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 4.0 seconds...
+[2024-03-20 20:16:29,661: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 6.0 seconds...
+[2024-03-20 20:16:39,765: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 8.0 seconds...
+[2024-03-20 20:16:51,864: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 10.0 seconds...
+[2024-03-20 20:17:05,957: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 12.0 seconds...
+[2024-03-20 20:17:22,056: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 14.0 seconds...
+[2024-03-20 20:17:40,167: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 16.0 seconds...
+[2024-03-20 20:18:00,253: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 18.0 seconds...
+[2024-03-20 20:18:06,476: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:18:10,608: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 2.0 seconds...
+[2024-03-20 20:18:16,691: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 4.0 seconds...
+[2024-03-20 20:18:24,770: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 6.0 seconds...
+[2024-03-20 20:18:34,853: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 8.0 seconds...
+[2024-03-20 20:18:46,935: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 10.0 seconds...
+[2024-03-20 20:19:01,012: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 12.0 seconds...
+[2024-03-20 20:19:17,101: ERROR/MainProcess] beat: Connection error: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.. Trying again in 14.0 seconds...
+[2024-03-20 20:19:33,677: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:19:33,738: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:19:43,739: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:19:53,739: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:03,739: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:10,225: INFO/MainProcess] beat: Starting...
+[2024-03-20 20:20:10,265: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:13,740: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:20,259: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:23,741: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:30,259: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:33,742: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:40,259: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:43,743: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:50,260: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:20:53,743: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:00,260: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:03,743: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:10,260: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:13,744: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:20,261: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:23,745: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:30,261: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:33,746: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:40,262: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:43,747: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:50,263: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:21:53,747: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:00,264: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:03,748: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:10,264: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:13,748: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:20,264: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:23,749: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:30,265: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:33,749: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:40,265: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:43,749: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:50,265: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:22:53,750: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:00,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:03,751: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:10,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:13,752: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:20,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:23,753: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:30,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:33,753: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:40,266: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:43,753: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:50,267: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:23:53,754: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:00,268: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:03,754: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:10,268: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:13,755: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:20,268: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:23,756: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:30,269: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:33,756: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:47,341: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:47,341: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:57,342: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:24:57,342: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:07,342: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:07,342: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:17,343: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:17,343: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:27,343: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:27,343: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:37,344: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:37,344: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:47,345: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:47,345: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:57,345: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:25:57,345: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:07,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:17,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:17,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:27,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:27,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:37,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:47,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:47,346: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:57,347: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:26:57,347: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:07,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:07,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:17,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:27,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:27,348: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:37,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:47,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:47,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:57,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:27:57,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:07,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:07,349: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:17,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:17,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:27,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:27,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:37,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:37,350: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:47,351: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:28:57,351: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:07,352: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:07,352: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:17,352: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:27,353: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:27,353: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:37,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:37,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:47,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:47,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:57,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:29:57,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:07,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:07,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:17,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:17,354: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:27,355: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:37,356: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:37,356: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:47,356: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:47,356: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:57,357: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:30:57,357: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:07,358: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:07,358: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:17,358: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:17,358: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:27,359: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:27,359: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:37,359: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:47,360: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:47,360: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:31:57,360: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:07,361: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:17,361: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:17,361: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:27,362: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:27,362: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:37,363: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:37,363: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:47,364: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:57,364: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:32:57,364: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:07,364: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:07,364: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:17,365: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:27,366: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:27,366: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:37,366: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:37,366: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:47,367: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:47,367: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:57,367: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:33:57,367: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:07,368: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:07,368: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:17,369: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:17,369: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:27,369: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:27,369: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:37,370: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:37,370: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:47,370: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:47,370: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:57,371: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:34:57,371: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:07,371: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:07,371: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:17,372: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:27,372: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:27,372: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:37,373: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:47,373: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:47,373: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:57,374: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:35:57,374: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:07,374: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:07,374: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:17,375: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:17,375: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:27,375: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:27,375: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:37,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:37,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:47,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:47,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:57,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:36:57,376: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:07,377: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:07,377: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:17,377: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:17,377: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:27,378: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:27,378: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:37,379: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:47,383: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:47,383: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:57,384: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:37:57,384: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:07,393: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:07,393: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:17,400: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:27,402: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:27,402: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:37,410: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:37,410: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)
+[2024-03-20 20:38:47,415: INFO/MainProcess] Scheduler: Sending due task process-emails-every-5-minutes (desis.apis.tasks.process_emails)

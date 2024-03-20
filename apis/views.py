@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from openai import ChatCompletion
 import openai,requests
 from django.http import JsonResponse
-from .tasks import process_emails
+# from .tasks import process_emails
 
 # Create your views here.
 global conversation
@@ -57,13 +57,15 @@ def add_user_status(request):
         allowedexpense = int(request.POST.get("allowedexpense"))
         monthlybudget = int(request.POST.get("monthlybudget"))
         pincode = int(request.POST.get("pincode"))
-        
+        gmail=str(request.POST.get("gmail"))
+        app_password=str(request.POST.get("a"))
         # Create or update UserStatus for the user
-        user_status, created = UserStatus.objects.get_or_create(user_id=1)  # Assuming user_id 1 is the only user
-        
+        user_status, created = UserStatus.objects.get_or_create(user_status=request.user_status) 
         user_status.allowedexpense = allowedexpense
         user_status.monthlybudget = monthlybudget
         user_status.pincode = pincode
+        user_status.gmail = gmail
+        user_status.app_password = app_password 
         user_status.save()
         prompt(request)
     return redirect(expense_summary)  # Render the form to add user status
@@ -136,10 +138,23 @@ def process_emails_view(request):
         username = request.POST.get('gmail')
         password = request.POST.get('app_password')
         # request.POST.get('password')
+# def process_emails_view(request):
+#     if request.method == 'POST':
+#         # Assuming username and password are passed in the request
+#         username = request.POST.get('gmail')
+#         password = request.POST.get('app_password')
+#         # request.POST.get('password')
 
-        # Trigger the Celery task
-        process_emails.delay(username, password)
+#         # Trigger the Celery task
+#         process_emails.delay(username, password)
 
-        return JsonResponse({'message': 'Email processing started successfully.'},status=200)
-    else:
-        return JsonResponse({'error': 'Only POST requests are allowed.'}, status=400)
+#         return JsonResponse({'message': 'Email processing started successfully.'},status=200)
+#     else:
+#         return JsonResponse({'error': 'Only POST requests are allowed.'}, status=400)
+
+
+def mail_expenses_view(request):
+    return render(request, 'mail_expenses.html')
+
+
+
