@@ -149,28 +149,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # settings.py
 
-# Celery Configuration
-# CELERY_BROKER_URL = 'redis://localhost:6379/'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/'
 # # Celery Configuration
-# # Example Redis URL, replace with your own
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_TIMEZONE = 'UTC'
+# CELERY_BROKER_URL = 'redis://default:ySJvfyznHCUhQwitowrhvQeF2JItWHDm@redis-10237.c12.us-east-1-4.ec2.cloud.redislabs.com:10237'
+# CELERY_RESULT_BACKEND = 'redis://default:ySJvfyznHCUhQwitowrhvQeF2JItWHDm@redis-10237.c12.us-east-1-4.ec2.cloud.redislabs.com:10237'
 
 # Additional Celery settings can go here...
 # settings.py
 
 
 
-# Celery Beat Configuration
-# CELERY_BEAT_SCHEDULE = {
-#     'process-emails-every-5-minutes': {
-#         'task': 'desis.apis.tasks.process_emails',
-#         'schedule': timedelta(seconds=10),  # Run every 5 minutes
-#     },
-# }
 
 # LOGGING = {
 #     "version": 1,
@@ -238,5 +225,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # }
 
 
-JWT_SECRET_KEY = 'your_secret_key_here'
-JWT_EXPIRATION_DELTA = None
+# JWT_SECRET_KEY = 'your_secret_key_here'
+# JWT_EXPIRATION_DELTA = None

@@ -162,7 +162,10 @@ def add_user_status(request):
         user_status.save()
         prompt(request)
     return redirect(expense_summary)  # Render the form to add user status
-    
+
+
+
+
 def update(request, id):
     id = int(id)
     expense_fetched = Expense.objects.get(id = id)
