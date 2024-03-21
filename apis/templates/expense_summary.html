@@ -14,13 +14,23 @@
 </head>
 <body>
     <h1>User Status</h1>
-    <p>User ID: {{ user_status.user_id }}</p>
+
+    {% if user_status.score >= 70 %}
+        <p style="color: green; font-size: 20px; font-weight: bold;">Doing Great!</p>
+    {% elif user_status.score >= 30%}
+        <p style="color: green; font-size: 20px; font-weight: bold;">Good Going</p>
+    {% elif user_status.score > 0 %}
+        <p style="color: rgb(241, 227, 39); font-size: 20px; font-weight: bold;">Closer to Your Limit</p>
+    {% else %}
+        <p style="color: red; font-size: 20px; font-weight: bold;">Exceeded Your Limit</p>
+    {% endif %}
     <p>Total Expenses: {{ user_status.total_expenses }}</p>
     <p>Last Updated: {{ user_status.last_updated }}</p>
     <p>Allowed Expense: {{ user_status.allowedexpense }}</p>
     <p>Monthly Budget: {{ user_status.monthlybudget }}</p>
-    <p>Score: {{ user_status.score }}</p>
     <p>Current Balance: {{ user_status.currentbalance }}</p>
+    <p>Score: {{ user_status.score }}</p>
+    
     <p>Pincode: {{ user_status.pincode }}</p>
     <div class="chart-container">
         <canvas id="pieChart" width="300" height="300"></canvas>
