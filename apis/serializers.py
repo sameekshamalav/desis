@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Pincode, User, Site, Category, Product, PP, Expenses, UserStatus, Leaderboard
+from .models import  User,  UserStatus,  MailExpense , Expense
 # from django.contrib.auth import authenticate
 # from django.contrib.auth.models import update_last_login
 # from rest_framework import serializers
@@ -11,39 +11,39 @@ from .models import Pincode, User, Site, Category, Product, PP, Expenses, UserSt
 # JWT_ENCODE_HANDLER = api_settings.JWT_ENCODE_HANDLER
 
 
-class PincodeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pincode
-        fields = '__all__'
+# class PincodeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Pincode
+#         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
 
-class SiteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Site
-        fields = '__all__'
+# class SiteSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Site
+#         fields = '__all__'
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = '__all__'
+# class CategorySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Category
+#         fields = '__all__'
 
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Product
-        fields = '__all__'
+# class ProductSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Product
+#         fields = '__all__'
 
-class PPSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PP
-        fields = '__all__'
+# class PPSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = PP
+#         fields = '__all__'
 
 class ExpensesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Expenses
+        model = Expense
         fields = '__all__'
 
 class UserStatusSerializer(serializers.ModelSerializer):
@@ -51,13 +51,20 @@ class UserStatusSerializer(serializers.ModelSerializer):
         model = UserStatus
         fields = '__all__'
 
-class LeaderboardSerializer(serializers.ModelSerializer):
+# class LeaderboardSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Leaderboard
+#         fields = '__all__'
+
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Leaderboard
+        model = User
+        fields = ['user_id', 'user_name', 'phone_number', 'gmail', 'login_password', 'app_password', 'is_active', 'is_staff', 'is_superuser']
+
+class MailExpenseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MailExpense
         fields = '__all__'
-
-
-
 
 
 

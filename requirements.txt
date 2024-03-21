@@ -5,3 +5,4 @@ django_celery_beat
 pymysql
 django
 transformers
+jwt

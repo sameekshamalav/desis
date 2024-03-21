@@ -1,3 +1,4 @@
+import random
 import uuid
 from django.db import models
 # from django.contrib.auth.models import BaseUserManager
@@ -5,11 +6,7 @@ from django.core.validators import RegexValidator
 
 
 # Create your models here.
-class Expense(models.Model):
-    item = models.CharField(max_length = 50)
-    amount = models.IntegerField()
-    category = models.CharField(max_length=50)
-    date = models.DateField()
+
 
 # class UserManager(BaseUserManager):
 #     def create_user(self, email, password=None):
@@ -61,31 +58,56 @@ class MailExpense(models.Model):
         db_table = 'expense'
 
 
-class UserStatus(models.Model):
-    
+class User(models.Model):
+    user_id = models.IntegerField(primary_key=True, unique=True)
     user_name =models.CharField(max_length=100)
     phone_regex = RegexValidator(regex=r'^\d{10}$', message="Phone number must be exactly 10 digits.")
     phone_number = models.CharField(validators=[phone_regex], max_length=10,blank=True)
-    total_expenses = models.IntegerField(default=0)
-    pincode = models.IntegerField(null=True)  # Assuming pincode can be nullable
     gmail = models.CharField(max_length = 50)
-    password=models.CharField(max_length=55)
+    login_password=models.CharField(max_length=55)
     app_password = models.CharField(max_length = 50)
-    number_of_expenses =models.IntegerField(default=0)
-    last_updated = models.DateTimeField(auto_now=True)
-    allowedexpense = models.IntegerField(default=0)
-    monthlybudget = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    # USERNAME_FIELD = "email"
+    # REQUIRED_FIELDS = []
 
-    
     def __str__(self):
         return self.gmail
+    
+    def save(self, *args, **kwargs):
+        if not self.user_id:
+            last_user = User.objects.order_by('-user_id').first()
+            if last_user:
+                self.user_id = last_user.user_id + 1
+            else:
+                self.user_id = 1
+        super(User, self).save(*args, **kwargs)
+    @classmethod
+    def generate_unique_user_id(cls):
+        while True:
+            user_id = random.randint(1000, 9999)  # Generate a random 4-digit user_id
+            if not cls.objects.filter(user_id=user_id).exists():  # Check if user_id is unique
+                return user_id    
 
-  
+    @classmethod
+    def get_user_credentials(cls, user_id):
+        try:
+            user = cls.objects.get(user_id=user_id)
+            return user.gmail, user.app_password
+        except cls.DoesNotExist:
+            return None, None
+
+    class Meta:
+        db_table = 'user'
+
+class UserStatus(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    total_expenses = models.IntegerField(default=0)
+    last_updated = models.DateTimeField(auto_now=True)
+    allowedexpense = models.IntegerField(default=0)
+    monthlybudget = models.IntegerField(default=0)
+    pincode = models.IntegerField(null=True)  # Assuming pincode can be nullable
 
     @property
     def score(self):
@@ -99,13 +121,24 @@ class UserStatus(models.Model):
         return self.monthlybudget - self.total_expenses
     
     class Meta:
-        db_table = 'user_status'
+        db_table='user_status'
 
+
+
+class Expense(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    item = models.CharField(max_length = 50)
+    amount = models.IntegerField()
+    category = models.CharField(max_length=50)
+    date = models.DateField()
+
+    class Meta:
+        db_table = 'expense'
 
 class Email(models.Model):
     id = models.AutoField(primary_key=True)
     email_id=models.CharField(max_length=255, default ='')
-    user_id = models.ForeignKey(UserStatus, on_delete=models.CASCADE) # user_id = models.CharField(max_length=255)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE) # user_id = models.CharField(max_length=255)
     sender = models.CharField(max_length=255)
     subject = models.CharField(max_length=255)
     body = models.TextField()
@@ -113,8 +146,7 @@ class Email(models.Model):
     processed = models.BooleanField(default=False)
     def __str__(self):
         return f'{self.subject} - {self.sender}'
-    class Meta:
-        db_table = 'expense'
+    
 
 
 
@@ -122,7 +154,7 @@ class MailExpense(models.Model):
     
     id = models.AutoField(primary_key=True)
     # user_id = models.CharField(max_length=255)
-    user_id = models.ForeignKey(UserStatus, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     item = models.TextField()
     category = models.TextField()

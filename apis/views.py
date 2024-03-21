@@ -1,6 +1,12 @@
 from email.utils import parsedate_to_datetime
+import genericpath
+import random
+from types import GenericAlias
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Expense, UserStatus,Email,MailExpense
+from grpc import GenericRpcHandler
+from numpy import generic
+from .models import Expense, UserStatus,Email,MailExpense,User
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 from openai import ChatCompletion
@@ -15,6 +21,9 @@ import re
 import google.generativeai as genai
 from datetime import datetime, timedelta
 import json
+from rest_framework import generics
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
+
 # from rest_framework import status
 # from rest_framework.generics import CreateAPIView, RetrieveAPIView
 # from rest_framework.response import Response
@@ -39,6 +48,71 @@ def prompt(request):
     
     request.session['conversation']=[]
     request.session['conversation'].append({"role": "system", "content": "Hello, you are a financial bot your name is DE Shaw Bot. I am sharing you my expenditure data in the format Item |Amount|Category|Date and the amount are in Indian National Rupees and always try to retun the responses with data "+my_expense+"\nNow I am giving you my user status too to help you make more personalised responses and advices (the user status is in format attribute|value):"+my_status})
+from .models import User
+from django.shortcuts import render
+from .serializers import MailExpenseSerializer, UserSerializer,User
+from django.http import JsonResponse
+from .utils import generate_jwt_token
+import jwt
+from .models import User
+from .forms import UserForm
+
+class UserListCreateView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+class MailExpenseListCreateView(generics.ListCreateAPIView):
+    queryset = MailExpense.objects.all()
+    serializer_class = MailExpenseSerializer
+
+class MailExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MailExpense.objects.all()
+    serializer_class = MailExpenseSerializer
+
+
+def get_user_credentials(request, user_id):
+    try:
+        email, app_password = User.get_user_credentials(user_id)
+        if email and app_password:
+            return JsonResponse({'email': email, 'app_password': app_password})
+        else:
+            return JsonResponse({'error': 'User not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('signup_success')  # Redirect to a success page
+    else:
+        form = UserForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def generate_token(request, user_id):
+    try:
+        user = User.objects.get(user_id=user_id)
+        token = generate_jwt_token(user)
+        return JsonResponse({'token': token})
+    except User.DoesNotExist:
+        return JsonResponse({'error': 'User does not exist'}, status=404)
+
+def decode_token(request):
+    token = request.GET.get('token')
+    if token:
+        try:
+            decoded_message = jwt.decode(token)
+            return JsonResponse(decoded_message)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    else:
+        return JsonResponse({'error': 'Token not provided'}, status=400)
+
 
 def home(request):
     conversation=request.session['conversation']
@@ -76,15 +150,15 @@ def add_user_status(request):
         allowedexpense = int(request.POST.get("allowedexpense"))
         monthlybudget = int(request.POST.get("monthlybudget"))
         pincode = int(request.POST.get("pincode"))
-        gmail=str(request.POST.get("gmail"))
-        app_password=str(request.POST.get("a"))
+        # gmail=str(request.POST.get("gmail"))
+        # app_password=str(request.POST.get("a"))
         # Create or update UserStatus for the user
         user_status, created = UserStatus.objects.get_or_create(user_status=request.user_status) 
         user_status.allowedexpense = allowedexpense
         user_status.monthlybudget = monthlybudget
         user_status.pincode = pincode
-        user_status.gmail = gmail
-        user_status.app_password = app_password 
+        # user_status.gmail = gmail
+        # user_status.app_password = app_password 
         user_status.save()
         prompt(request)
     return redirect(expense_summary)  # Render the form to add user status
@@ -125,6 +199,7 @@ def delete(request, id):
 
 def expense_summary(request):
     # Retrieve all expenses from the database
+    user_id = request.user_id
     expenses = Expense.objects.all()
 
     # Calculate total spending for each category
@@ -137,11 +212,11 @@ def expense_summary(request):
     category_percentages = {}
     for category_total in category_totals:
         category_percentages[category_total['category']] = (category_total['total'] / total_spending) * 100
-    
+    user_id=User.objects.get(user_id)
     # Aggregate spending data based on dates
     daily_spending_data = expenses.values('date').annotate(total=Sum('amount'))
-    user_status = UserStatus.objects.get(user_id=1)
-
+    user_status = UserStatus.objects.get(user_id)
+    print(user_id,"qwerru")
     context = {
         'category_percentages': category_percentages,
         'daily_spending_data': daily_spending_data,
@@ -263,7 +338,7 @@ def process_emails(username,password,user):
         for email_id, email_data in emails:
             Email.objects.create(
                 email_id=email_id,  # Save email_id to identify emails uniquely
-                user_id=UserStatus.objects.filter(pk=user).first(),
+                user_id=User.objects.filter(pk=user).first(),
                 sender=email_data["sender"],
                 subject=email_data["subject"],
                 body=email_data["body"],
@@ -303,7 +378,7 @@ def process_emails(username,password,user):
             print(keys)
             
             sender_platform = email_data.sender.split("@")[1].split(".")[0]
-            user_id = email_data.user_id  
+            user_id = email_data.user_id 
             order_id = orde_dic["order_id"] if "order_id" in keys else "_"
             product_name = orde_dic["product_name"] if "product_name" in keys else "_"
             category = orde_dic["category"] if "category" in keys else "_"
@@ -341,7 +416,7 @@ def process_emails(username,password,user):
 
             # Store data in MailExpense model
             MailExpense.objects.create(
-                user_id=UserStatus.objects.filter(pk=user).first(),
+                user_id=User.objects.filter(pk=user).first(),
                 platform=sender_platform,
                 order_id=order_id,
                 item=product_name,
@@ -395,20 +470,109 @@ def process_emails_view(request):
 
 
 @api_view(["POST",])
+# def mail_expenses_view(request):
+#     data = request.data
+#     # email = data["email"]
+#     user_id = data["id"]
+#     # Check if the user exists based on the provided email
+#     try:
+#         # user = User.objects.get(gmail=email)
+#         user = User.objects.get(user_id=user_id)
+#     except User.DoesNotExist:
+#         return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+#     # Obtain the user_id directly from the user object
+#     user_id = user.pk
+#     print(user_id)
+#     apppassword = User.objects.get(user_id=user_id).app_password
+#     gmail= User.objects.get(user_id=user_id).gmail
+#     # password = data["password"]
+#     process = process_emails(gmail, apppassword, user_id)
+    
+#     # Assuming process_emails function returns a boolean indicating success or failure
+#     if process:
+#         return Response(status=status.HTTP_204_NO_CONTENT)
+#     else:
+#         return Response({"message": "Failed to process emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 def mail_expenses_view(request):
     data = request.data
-    email = data["email"]
-    if not UserStatus.objects.filter(gmail=email).exists():
-        return Response({"message":"user not found"},status=status.HTTP_404_NOT_FOUND)
-    user= UserStatus.objects.filter(gmail=email).first()
     
-    user = user.pk
-    print(user)
-    password = data["password"]
-    process = process_emails(email,password,user)
-    # if process:
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    # Ensure that 'id' is present in the request data
+    if 'id' not in data:
+        return Response({"message": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-    # return Response(status=status.HTTP_403_FORBIDDEN)
+    user_id = data["id"]
+    
+    try:
+        # Check if the user exists based on the provided user_id
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    # Retrieve user's email and app_password
+    gmail = user.gmail
+    print(gmail,"x")
+    apppassword = user.app_password
+    
+    # Call process_emails function
+    process = process_emails(gmail, apppassword, user_id)
+    
+    # Assuming process_emails function returns a boolean indicating success or failure
+    if process:
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response({"message": "Failed to process emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+def create_user(request):
+    # Generate a random 4-digit user_id
+    user_id = random.randint(1000, 9999)
+    # Ensure user_id doesn't already exist
+    while User.objects.filter(user_id=user_id).exists():
+        user_id = random.randint(1000, 9999)
+    
+    # Other user data
+    user_name = "Sample User"  # You can replace this with actual user data
+    phone_number = "1234567890"  # You can replace this with actual user data
+    gmail = "example@example.com"  # You can replace this with actual user data
+    login_password = "password"  # You can replace this with actual user data
+    app_password = "app_password"  # You can replace this with actual user data
+
+    # Create the user
+    user = User.objects.create(
+        user_id=user_id,
+        user_name=user_name,
+        phone_number=phone_number,
+        gmail=gmail,
+        login_password=login_password,
+        app_password=app_password
+    )
+
+    return HttpResponse(f"User created with user_id: {user_id}")
 
 
+
+def login(request):
+    if request.method == 'POST':
+        gmail = request.POST.get('gmail')
+        login_password = request.POST.get('login_password')
+        try:
+            user = User.objects.get(gmail=gmail, login_password=login_password)
+            return JsonResponse({'exists': True})
+        except User.DoesNotExist:
+            return JsonResponse({'exists': False})
+    return render(request, 'login.html')
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  # Redirect to home page after successful signup
+    else:
+        form = UserForm()
+    return render(request, 'signup.html', {'form': form})
+
+def index(request):
+    return render(request, 'index.html')

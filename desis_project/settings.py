@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'desis_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gmail',
+        'NAME': 'solution',
         'USER': 'root',
         'PASSWORD': 'Growth@5678',
         'HOST': 'localhost',
@@ -236,3 +236,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     "JWT_AUTH_HEADER_PREFIX": "Bearer",
 #     "JWT_AUTH_COOKIE": None,
 # }
+
+
+JWT_SECRET_KEY = 'your_secret_key_here'
+JWT_EXPIRATION_DELTA = None
