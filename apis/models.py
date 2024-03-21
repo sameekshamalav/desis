@@ -1,4 +1,8 @@
+import uuid
 from django.db import models
+# from django.contrib.auth.models import BaseUserManager
+from django.core.validators import RegexValidator
+
 
 # Create your models here.
 class Expense(models.Model):
@@ -6,6 +10,35 @@ class Expense(models.Model):
     amount = models.IntegerField()
     category = models.CharField(max_length=50)
     date = models.DateField()
+
+# class UserManager(BaseUserManager):
+#     def create_user(self, email, password=None):
+#         """
+#         Create and return a `User` with an email, username and password.
+#         """
+#         if not email:
+#             raise ValueError("Users Must Have an email address")
+
+#         user = self.model(
+#             email=self.normalize_email(email),
+#         )
+#         user.set_password(password)
+#         user.save(using=self._db)
+#         return user
+
+#     def create_superuser(self, email, password):
+#         """
+#         Create and return a `User` with superuser (admin) permissions.
+#         """
+#         if password is None:
+#             raise TypeError("Superusers must have a password.")
+
+#         user = self.create_user(email, password)
+#         user.is_superuser = True
+#         user.is_staff = True
+#         user.save()
+
+#         return user
 
 
 class MailExpense(models.Model):
@@ -29,16 +62,30 @@ class MailExpense(models.Model):
 
 
 class UserStatus(models.Model):
-    user_id = models.IntegerField(primary_key=True)
+    
     user_name =models.CharField(max_length=100)
+    phone_regex = RegexValidator(regex=r'^\d{10}$', message="Phone number must be exactly 10 digits.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=10,blank=True)
     total_expenses = models.IntegerField(default=0)
+    pincode = models.IntegerField(null=True)  # Assuming pincode can be nullable
+    gmail = models.CharField(max_length = 50)
+    password=models.CharField(max_length=55)
+    app_password = models.CharField(max_length = 50)
     number_of_expenses =models.IntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     allowedexpense = models.IntegerField(default=0)
     monthlybudget = models.IntegerField(default=0)
-    pincode = models.IntegerField(null=True)  # Assuming pincode can be nullable
-    gmail = models.CharField(max_length = 50)
-    app_password = models.CharField(max_length = 50)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    
+    def __str__(self):
+        return self.gmail
+
+  
 
     @property
     def score(self):
@@ -63,7 +110,7 @@ class Email(models.Model):
     subject = models.CharField(max_length=255)
     body = models.TextField()
     received_at = models.DateTimeField(auto_now_add=True)
-
+    processed = models.BooleanField(default=False)
     def __str__(self):
         return f'{self.subject} - {self.sender}'
     class Meta:
@@ -90,3 +137,20 @@ class MailExpense(models.Model):
 # User key to identify for which user the expense is added
     def __str__(self):       return self.item
 
+
+
+# class UserProfile(models.Model):
+#     """
+#     to store all other attributes associated to user
+#     """
+
+#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+#     user = models.OneToOneField(UserStatus, on_delete=models.CASCADE, related_name="profile")
+#     name = models.CharField(max_length=50, unique=False)
+
+#     class Meta:
+#         """
+#         to set table name in database
+#         """
+
+#         db_table = "profile" 

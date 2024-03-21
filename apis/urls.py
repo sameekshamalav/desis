@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+
+
 urlpatterns = [
     path('', views.home, name = 'index'),
     path('add', views.add, name = 'add'),
@@ -11,5 +13,9 @@ urlpatterns = [
     path('chatbot', views.chatbot_view, name = 'chatbot')
     path('process-emails/', views.process_emails_view, name='process_emails'),
     # path('process_emails/', views.process_emails_view, name='process_emails'),
+
     path('mail_expenses/', views.mail_expenses_view, name='mail_expenses'),
+
 ]
+
+

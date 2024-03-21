@@ -7,9 +7,10 @@ from .models import MailExpense, Expense
 def create_expense_from_mailexpense(sender, instance, created, **kwargs):
     if created:
         print('added')
-        Expense.objects.create(
-            item=instance.item,
-            amount=instance.amount,
-            category=instance.category,
-            date=instance.date_of_purchase.date()
-        )
+        if (instance.amount!=0):
+             Expense.objects.create(
+                 item=instance.item,
+                 amount=instance.amount,
+                 category=instance.category,
+                 date=instance.date_of_purchase.date()
+             )

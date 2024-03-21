@@ -126,14 +126,14 @@ import google.generativeai as genai
 import time
 from django.utils import timezone
 
-@shared_task
-def process_emails():
-    # Fetching user credentials
-    users = UserStatus.objects.all()
-    tasks = []
-    for user in users:
-        tasks.append(process_emails.s(user.gmail, user.app_password))
-    group(*tasks)()
+# @shared_task
+# def process_emails():
+#     # Fetching user credentials
+#     users = UserStatus.objects.all()
+#     tasks = []
+#     for user in users:
+#         tasks.append(process_emails.s(user.gmail, user.app_password))
+#     group(*tasks)()
 
 @shared_task
 def process_emails():
