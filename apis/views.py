@@ -10,7 +10,7 @@ from .models import Expense, UserStatus,Email,MailExpense,User
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 from openai import ChatCompletion
-import openai,requests
+import requests
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -115,7 +115,10 @@ def decode_token(request):
 
 
 def home(request):
-    conversation=request.session['conversation']
+    print(request.session)
+    # conversation= request.session['conversation']
+    conversation= ""
+
     expenses = Expense.objects.all()
     if request.POST:
         month = request.POST['month']
@@ -162,9 +165,6 @@ def add_user_status(request):
         user_status.save()
         prompt(request)
     return redirect(expense_summary)  # Render the form to add user status
-
-
-
 
 def update(request, id):
     id = int(id)
@@ -229,11 +229,17 @@ def expense_summary(request):
 
 def process_emails(username,password,user):
     print(user)
+    print(username)
+    print(password)
    
     # Function to connect to the IMAP server
     def connect_to_imap(username, password):
+        print("ssss", username , "ssss", password)
         mail = imaplib.IMAP4_SSL('imap.gmail.com')
+        print("ssss", username , "ssss", password)
         mail.login(username, password)
+        print("ssss", username , "ssss", password)
+
         return mail
 
     # Function to fetch emails from the inbox within the last 2 minutes
@@ -438,18 +444,21 @@ def process_emails(username,password,user):
 
     def process_data_and_insert(username,password):
     # Fetching user credentials
-        
             mail = connect_to_imap(username, password)
+            print("a")
             emails = fetch_emails_within_last_two_minutes(mail)
+            print("b")
             # print(emails)
             order_emails = identify_order_emails(emails)
+            print("c")
+
             print(order_emails)
             store_emails_in_db(order_emails)
             process_emails_with_gemini(user)
 
     process_data_and_insert(username, password)
     return True
-    
+
     
 def process_emails_view(request):
     if request.method == 'POST':
@@ -518,9 +527,11 @@ def mail_expenses_view(request):
     gmail = user.gmail
     print(gmail,"x")
     apppassword = user.app_password
+    print(apppassword)
     
     # Call process_emails function
     process = process_emails(gmail, apppassword, user_id)
+    print(process)
     
     # Assuming process_emails function returns a boolean indicating success or failure
     if process:
@@ -579,3 +590,85 @@ def signup(request):
 
 def index(request):
     return render(request, 'index.html')
+
+
+
+def format_expenses_as_table(expenses):
+    # Define headers for the table
+    headers = ["Item", "Amount", "Category", "Date"]
+
+    # Create a list to hold each row of data
+    table_data = []
+
+    # Append headers as the first row of the table
+    table_data.append(headers)
+
+    # Iterate over each expense object and append its attributes as a row in the table
+    for expense in expenses:
+        row = [expense.item, expense.amount, expense.category, expense.date]
+        table_data.append(row)
+
+    # Calculate the maximum width of each column
+    col_widths = [max(len(str(row[i])) for row in table_data) for i in range(len(headers))]
+
+    # Format the table
+    formatted_table = ""
+    for row in table_data:
+        formatted_table += "|".join(f"{str(row[i]):<{col_widths[i]}}" for i in range(len(headers))) + "\n"
+
+    return formatted_table
+
+def format_user_status_table(user_status):
+    # Initialize the header and separator
+    table = "Attribute            | Value\n"
+    
+
+    # Iterate over each field in the UserStatus model
+    for field in user_status._meta.fields:
+        # Format the field name and value
+        field_name = field.name.capitalize().replace('_', ' ')
+        field_value = getattr(user_status, field.name)
+        
+        # Add the field name and value to the table
+        table += f"{field_name.ljust(20)}| {field_value}\n"
+
+    return table
+
+def chatbot_view(request):
+    conversation=request.session['conversation']
+    expenses = Expense.objects.all()
+    if request.method == 'POST':
+        user_input = request.POST.get('user_input')
+
+        # Append user input to the conversation
+        if user_input:
+            conversation.append({"role": "user", "content": user_input})
+
+        # Define the API endpoint and parameters
+        api_endpoint = "https://api.openai.com/v1/chat/completions"
+        api_key = "ENTER YOUR KEY HERE"  # Replace with your actual API key
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}"
+        }
+        data = {
+            "model": "gpt-3.5-turbo",
+            "messages": conversation
+        }
+
+        # Make a POST request to the API
+        response = requests.post(api_endpoint, json=data, headers=headers)
+
+        # Extract chatbot replies from the API response
+        if response.status_code == 200:
+            chatbot_replies = [message['message']['content'] for message in response.json()['choices'] if message['message']['role'] == 'assistant']
+            # Append chatbot replies to the conversation
+            for reply in chatbot_replies:
+                conversation.append({"role": "assistant", "content": reply})
+
+            # Update the conversation in the session
+            request.session['conversation'] = conversation
+            
+    # Render the template with the updated conversation
+    
+    return render(request, 'index.html', {'conversation': request.session['conversation'], 'expenses': expenses})
