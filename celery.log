@@ -1,0 +1,58 @@
+[2024-03-22 01:39:15,418: WARNING/MainProcess] C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\worker\consumer\consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-03-22 01:39:15,777: INFO/SpawnPoolWorker-1] child process 29052 calling self.run()
+[2024-03-22 01:39:15,911: INFO/SpawnPoolWorker-2] child process 31608 calling self.run()
+[2024-03-22 01:39:15,979: INFO/SpawnPoolWorker-3] child process 30424 calling self.run()
+[2024-03-22 01:39:16,042: INFO/SpawnPoolWorker-5] child process 16248 calling self.run()
+[2024-03-22 01:39:16,050: INFO/SpawnPoolWorker-4] child process 31284 calling self.run()
+[2024-03-22 01:39:16,163: INFO/SpawnPoolWorker-6] child process 9564 calling self.run()
+[2024-03-22 01:39:16,241: INFO/SpawnPoolWorker-7] child process 26476 calling self.run()
+[2024-03-22 01:39:16,250: INFO/SpawnPoolWorker-8] child process 13516 calling self.run()
+[2024-03-22 01:39:16,366: INFO/SpawnPoolWorker-9] child process 29192 calling self.run()
+[2024-03-22 01:39:16,396: INFO/SpawnPoolWorker-10] child process 22792 calling self.run()
+[2024-03-22 01:39:16,549: INFO/SpawnPoolWorker-11] child process 11900 calling self.run()
+[2024-03-22 01:39:16,638: INFO/SpawnPoolWorker-12] child process 31384 calling self.run()
+[2024-03-22 01:39:17,254: INFO/MainProcess] Connected to redis://default:**@redis-10237.c12.us-east-1-4.ec2.cloud.redislabs.com:10237//
+[2024-03-22 01:39:17,255: WARNING/MainProcess] C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\worker\consumer\consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-03-22 01:39:19,135: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-22 01:39:28,289: INFO/MainProcess] mingle: all alone
+[2024-03-22 01:39:40,903: INFO/MainProcess] celery@DESKTOP-KN9IJMQ ready.
+[2024-03-22 01:42:49,637: INFO/MainProcess] Watching for file changes with StatReloader
+[2024-03-22 01:43:10,917: WARNING/MainProcess] C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\worker\consumer\consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-03-22 01:43:11,270: INFO/SpawnPoolWorker-1] child process 12092 calling self.run()
+[2024-03-22 01:43:11,350: INFO/SpawnPoolWorker-2] child process 18544 calling self.run()
+[2024-03-22 01:43:11,457: INFO/SpawnPoolWorker-4] child process 19364 calling self.run()
+[2024-03-22 01:43:11,458: INFO/SpawnPoolWorker-3] child process 21096 calling self.run()
+[2024-03-22 01:43:11,567: INFO/SpawnPoolWorker-5] child process 23508 calling self.run()
+[2024-03-22 01:43:11,588: INFO/SpawnPoolWorker-7] child process 1300 calling self.run()
+[2024-03-22 01:43:11,624: INFO/SpawnPoolWorker-6] child process 30924 calling self.run()
+[2024-03-22 01:43:11,667: INFO/SpawnPoolWorker-9] child process 14944 calling self.run()
+[2024-03-22 01:43:11,672: INFO/SpawnPoolWorker-8] child process 30588 calling self.run()
+[2024-03-22 01:43:11,771: INFO/SpawnPoolWorker-10] child process 10400 calling self.run()
+[2024-03-22 01:43:11,881: INFO/SpawnPoolWorker-11] child process 24764 calling self.run()
+[2024-03-22 01:43:11,989: INFO/SpawnPoolWorker-12] child process 20916 calling self.run()
+[2024-03-22 01:43:12,765: INFO/MainProcess] Connected to redis://default:**@redis-10237.c12.us-east-1-4.ec2.cloud.redislabs.com:10237//
+[2024-03-22 01:43:12,766: WARNING/MainProcess] C:\Users\AASHI JAIN\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\celery\worker\consumer\consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-03-22 01:43:14,557: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-22 01:43:25,383: INFO/MainProcess] mingle: all alone
+[2024-03-22 01:43:37,152: INFO/MainProcess] celery@DESKTOP-KN9IJMQ ready.
+[2024-03-22 01:48:43,540: INFO/MainProcess] C:\Users\AASHI JAIN\Desktop\desis\desis_project\celery.py changed, reloading.
