@@ -1,3 +1,4 @@
+from datetime import timezone
 import random
 import uuid
 from django.db import models
@@ -38,25 +39,6 @@ from django.core.validators import RegexValidator
 #         return user
 
 
-class MailExpense(models.Model):
-    id = models.AutoField(primary_key=True)
-    # user_id = models.CharField(max_length=255)
-    amount = models.PositiveIntegerField()
-    item = models.TextField()
-    category = models.TextField()
-    date_of_purchase = models.DateTimeField()
-    platform = models.TextField(default="self")
-    status = models.TextField()
-    order_id = models.TextField()
-    feedback = models.TextField()
-
-
-# User key to identify for which user the expense is added
-    def __str__(self):
-        return self.item
-    class Meta:
-        db_table = 'expense'
-
 
 class User(models.Model):
     user_id = models.IntegerField(primary_key=True, unique=True)
@@ -69,6 +51,8 @@ class User(models.Model):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    last_login = models.DateTimeField(null=True, blank=True)
+
     # USERNAME_FIELD = "email"
     # REQUIRED_FIELDS = []
 
@@ -97,6 +81,11 @@ class User(models.Model):
             return user.gmail, user.app_password
         except cls.DoesNotExist:
             return None, None
+        
+
+    def set_last_login(self):
+        self.last_login = timezone.now()
+        self.save(update_fields=['last_login'])
 
     class Meta:
         db_table = 'user'
@@ -124,6 +113,19 @@ class UserStatus(models.Model):
         db_table='user_status'
 
 
+class MailExpense(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    id = models.AutoField(primary_key=True)
+    # user_id = models.CharField(max_length=255)
+    amount = models.PositiveIntegerField()
+    item = models.TextField()
+    category = models.TextField()
+    date_of_purchase = models.DateTimeField()
+    platform = models.TextField(default="self")
+    status = models.TextField()
+    order_id = models.TextField()
+    feedback = models.TextField()
+
 
 class Expense(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
@@ -131,7 +133,10 @@ class Expense(models.Model):
     amount = models.IntegerField()
     category = models.CharField(max_length=50)
     date = models.DateField()
-
+    
+# User key to identify for which user the expense is added
+    def __str__(self):
+        return self.item
     class Meta:
         db_table = 'expense'
 
@@ -147,8 +152,6 @@ class Email(models.Model):
     def __str__(self):
         return f'{self.subject} - {self.sender}'
     
-
-
 
 class MailExpense(models.Model):
     
@@ -168,7 +171,10 @@ class MailExpense(models.Model):
     
 # User key to identify for which user the expense is added
     def __str__(self):       return self.item
-
+    def __str__(self):
+        return self.item
+    class Meta:
+        db_table = 'mailexpense'
 
 
 # class UserProfile(models.Model):

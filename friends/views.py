@@ -24,3 +24,4 @@ class GroupViewSet(viewsets.ModelViewSet):
             return Response({'message': 'User removed from group successfully'}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'User not found in group'}, status=status.HTTP_404_NOT_FOUND)
+    

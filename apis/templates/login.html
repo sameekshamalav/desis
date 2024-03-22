@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h2>User Login</h2>
-        <form method="post" id="loginForm">
+        <form method="post" id="LoginForm">
             {% csrf_token %}
             <div class="form-group">
                 <label for="gmail">Gmail:</label>
@@ -37,16 +37,9 @@
             })
             .then(response => {
                 if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Failed to login');
-                }
-            })
-            .then(data => {
-                if (data.exists) {
                     window.location.href = '/'; // Redirect to home page
                 } else {
-                    window.location.href = '/signup/'; // Redirect to signup page if user doesn't exist
+                    throw new Error('Failed to login');
                 }
             })
             .catch(error => {
@@ -56,3 +49,4 @@
     </script>
 </body>
 </html>
+

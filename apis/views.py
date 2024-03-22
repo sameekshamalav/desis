@@ -1,5 +1,6 @@
 from email.utils import parsedate_to_datetime
 import genericpath
+from pyexpat.errors import messages
 import random
 from types import GenericAlias
 from django.http import HttpResponse
@@ -11,6 +12,7 @@ from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 from openai import ChatCompletion
 import requests
+from django.urls import reverse
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -23,6 +25,23 @@ from datetime import datetime, timedelta
 import json
 from rest_framework import generics
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from .models import User
+from django.shortcuts import render
+from .serializers import MailExpenseSerializer, UserSerializer,User
+from django.http import JsonResponse
+# from .utils import generate_jwt_token
+import jwt
+from .models import User
+from .forms import LoginForm, UserForm
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate , login
+from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
+from .forms import UserForm
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 # from rest_framework import status
 # from rest_framework.generics import CreateAPIView, RetrieveAPIView
@@ -48,14 +67,6 @@ def prompt(request):
     
     request.session['conversation']=[]
     request.session['conversation'].append({"role": "system", "content": "Hello, you are a financial bot your name is DE Shaw Bot. I am sharing you my expenditure data in the format Item |Amount|Category|Date and the amount are in Indian National Rupees and always try to retun the responses with data "+my_expense+"\nNow I am giving you my user status too to help you make more personalised responses and advices (the user status is in format attribute|value):"+my_status})
-from .models import User
-from django.shortcuts import render
-from .serializers import MailExpenseSerializer, UserSerializer,User
-from django.http import JsonResponse
-from .utils import generate_jwt_token
-import jwt
-from .models import User
-from .forms import UserForm
 
 class UserListCreateView(generics.ListCreateAPIView):
     queryset = User.objects.all()
@@ -83,35 +94,26 @@ def get_user_credentials(request, user_id):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('signup_success')  # Redirect to a success page
-    else:
-        form = UserForm()
-    return render(request, 'signup.html', {'form': form})
 
 
-def generate_token(request, user_id):
-    try:
-        user = User.objects.get(user_id=user_id)
-        token = generate_jwt_token(user)
-        return JsonResponse({'token': token})
-    except User.DoesNotExist:
-        return JsonResponse({'error': 'User does not exist'}, status=404)
+# def generate_token(request, user_id):
+#     try:
+#         user = User.objects.get(user_id=user_id)
+#         token = generate_jwt_token(user)
+#         return JsonResponse({'token': token})
+#     except User.DoesNotExist:
+#         return JsonResponse({'error': 'User does not exist'}, status=404)
 
-def decode_token(request):
-    token = request.GET.get('token')
-    if token:
-        try:
-            decoded_message = jwt.decode(token)
-            return JsonResponse(decoded_message)
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=400)
-    else:
-        return JsonResponse({'error': 'Token not provided'}, status=400)
+# def decode_token(request):
+#     token = request.GET.get('token')
+#     if token:
+#         try:
+#             decoded_message = jwt.decode(token)
+#             return JsonResponse(decoded_message)
+#         except Exception as e:
+#             return JsonResponse({'error': str(e)}, status=400)
+#     else:
+#         return JsonResponse({'error': 'Token not provided'}, status=400)
 
 
 def home(request):
@@ -120,11 +122,12 @@ def home(request):
     conversation= ""
 
     expenses = Expense.objects.all()
-    if request.POST:
-        month = request.POST['month']
-        year = request.POST['year']
-        expenses = Expense.objects.filter(date__year=year, date__month=month)
-    
+    if request.method == 'POST':
+        print(request.COOKIES)
+        # month = request.POST['month']
+        # year = request.POST['year']
+        # expenses = Expense.objects.filter(date__year=year, date__month=month)
+    expenses = Expense.objects.all()
     return render(request, 'index.html', {'expenses': expenses, 'conversation': conversation})
 
 # create
@@ -406,18 +409,23 @@ def process_emails(username,password,user):
             # date_time_format = '%A %B %d %Y at %H":"%M'
             # date_time_format = '%Y-%m-%d %H:%M:%S.%f%z'    
             # date_time = datetime.strptime(orde_dic["date/time"],date_time_format) 
-            # if "date/time" in keys else datetime.now()
-            # date_time=date_time.strftime(r'%Y-%m-%d %H:%M:%S')
-            if '.' in orde_dic["date/time"] and '+' in orde_dic["date/time"]:
-                date_time_format = '%Y-%m-%d %H:%M:%S.%f%z'
-            else:
-                date_time_format = '%Y-%m-%d %H:%M:%S'
+            try :
+                if "date/time" in keys: 
+                # date_time=date_time.strftime(r'%Y-%m-%d %H:%M:%S')
+                    if '.' in orde_dic["date/time"] and '+' in orde_dic["date/time"]:
+                        date_time_format = r'%Y-%m-%d %H:%M:%S.%f%z'
+                    else:
+                        date_time_format = r'%Y-%m-%d %H:%M:%S'
+                
+            
+                date_time = datetime.strptime(orde_dic["date/time"], date_time_format)    
+            except :
+                date_time = datetime.now()
+                date_time = date_time.strftime(r"%Y-%m-%d %H:%M:%S")
+                    
 
 # Parse the string to datetime object
-            try:
-                date_time = datetime.strptime(orde_dic["date/time"], date_time_format)    
-            except ValueError:
-                    print("Error: Provided date/time string does not match the expected format.")      
+                 
             status = orde_dic["status"] if "status" in keys else "_"
             feedback = orde_dic["feedback"] if "feedback" in keys else "_"
              
@@ -445,13 +453,11 @@ def process_emails(username,password,user):
     def process_data_and_insert(username,password):
     # Fetching user credentials
             mail = connect_to_imap(username, password)
-            print("a")
+            
             emails = fetch_emails_within_last_two_minutes(mail)
-            print("b")
+            
             # print(emails)
             order_emails = identify_order_emails(emails)
-            print("c")
-
             print(order_emails)
             store_emails_in_db(order_emails)
             process_emails_with_gemini(user)
@@ -459,7 +465,7 @@ def process_emails(username,password,user):
     process_data_and_insert(username, password)
     return True
 
-    
+   
 def process_emails_view(request):
     if request.method == 'POST':
         # Assuming username and password are passed in the request
@@ -481,57 +487,26 @@ def process_emails_view(request):
 #         return JsonResponse({'error': 'Only POST requests are allowed.'}, status=400)
 
 
-@api_view(["POST",])
-# def mail_expenses_view(request):
-#     data = request.data
-#     # email = data["email"]
-#     user_id = data["id"]
-#     # Check if the user exists based on the provided email
-#     try:
-#         # user = User.objects.get(gmail=email)
-#         user = User.objects.get(user_id=user_id)
-#     except User.DoesNotExist:
-#         return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-    
-#     # Obtain the user_id directly from the user object
-#     user_id = user.pk
-#     print(user_id)
-#     apppassword = User.objects.get(user_id=user_id).app_password
-#     gmail= User.objects.get(user_id=user_id).gmail
-#     # password = data["password"]
-#     process = process_emails(gmail, apppassword, user_id)
-    
-#     # Assuming process_emails function returns a boolean indicating success or failure
-#     if process:
-#         return Response(status=status.HTTP_204_NO_CONTENT)
-#     else:
-#         return Response({"message": "Failed to process emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
+@api_view(["POST"])
 def mail_expenses_view(request):
     data = request.data
-    
-    # Ensure that 'id' is present in the request data
-    if 'id' not in data:
-        return Response({"message": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
-
-    user_id = data["id"]
-    
+    print(data)
+    # email = data["email"]
+    user_id = data["user_id"]
+    # Check if the user exists based on the provided email
     try:
-        # Check if the user exists based on the provided user_id
-        user = User.objects.get(pk=user_id)
+        # user = User.objects.get(gmail=email)
+        user = User.objects.get(user_id=user_id)
     except User.DoesNotExist:
         return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
     
-    # Retrieve user's email and app_password
-    gmail = user.gmail
-    print(gmail,"x")
-    apppassword = user.app_password
-    print(apppassword)
-    
-    # Call process_emails function
+    # Obtain the user_id directly from the user object
+    user_id = user.pk
+    print(user_id)
+    apppassword = User.objects.get(user_id=user_id).app_password
+    gmail= User.objects.get(user_id=user_id).gmail
+    # password = data["password"]
     process = process_emails(gmail, apppassword, user_id)
-    print(process)
     
     # Assuming process_emails function returns a boolean indicating success or failure
     if process:
@@ -539,6 +514,81 @@ def mail_expenses_view(request):
     else:
         return Response({"message": "Failed to process emails"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
+# def mail_expenses_view(request):
+#     if request.method == 'POST':
+#         # Extract user_id from the request body
+#         user_id = request.POST.get('id')
+
+#         if not user_id:
+#             return JsonResponse({"error": "User ID is required"}, status=400)
+#         try:
+#             user = User.objects.get(pk=user_id)
+#         except User.DoesNotExist:
+#             return JsonResponse({"error": "User not found"}, status=404)
+
+#         gmail = user.gmail
+#         apppassword = user.app_password
+
+#         # Assuming process_emails function returns a boolean indicating success or failure
+#         process_success = process_emails(gmail, apppassword, user)
+
+#         if process_success:
+#             # Fetch mail expenses for the user and return as JSON
+#             expenses = MailExpense.objects.filter(user_id=user_id).values()
+#             return JsonResponse({"expenses": list(expenses)})
+#         else:
+#             return JsonResponse({"error": "Failed to process emails"}, status=500)
+#     else:
+#         return JsonResponse({"error": "Method not allowed"}, status=405)
+
+def mail_expenses_page(request):
+    # process_emails
+
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    user = User.objects.filter(user_id=user_id).first()
+    print(cookies)
+    process_emails(user.gmail,user.app_password,user.pk)
+    
+    return redirect(to="/")
+  
+    
+
+# class MailExpensesView(TemplateView):
+#     template_name = 'mail_expenses.html'
+
+#     def post(self, request, *args, **kwargs):
+#         data = request.POST
+
+#         # Ensure that 'id' is present in the request data
+#         if 'id' not in data:
+#             return HttpResponse("User ID is required", status=400)
+
+#         user_id = data["id"]
+
+#         try:
+#             # Check if the user exists based on the provided user_id
+#             user = User.objects.get(pk=user_id)
+#         except User.DoesNotExist:
+#             return HttpResponse("User not found", status=404)
+
+#         # Retrieve user's email and app_password
+#         gmail = user.gmail
+#         apppassword = user.app_password
+
+#         # Call process_emails function
+#         process = process_emails(gmail, apppassword, user_id)
+
+#         # Assuming process_emails function returns a boolean indicating success or failure
+#         if process:
+#             return HttpResponse(status=204)
+#         else:
+#             return HttpResponse("Failed to process emails", status=500)
 def create_user(request):
     # Generate a random 4-digit user_id
     user_id = random.randint(1000, 9999)
@@ -566,32 +616,58 @@ def create_user(request):
     return HttpResponse(f"User created with user_id: {user_id}")
 
 
-
-def login(request):
-    if request.method == 'POST':
-        gmail = request.POST.get('gmail')
-        login_password = request.POST.get('login_password')
-        try:
-            user = User.objects.get(gmail=gmail, login_password=login_password)
-            return JsonResponse({'exists': True})
-        except User.DoesNotExist:
-            return JsonResponse({'exists': False})
-    return render(request, 'login.html')
-
-def signup(request):
+def sign_up(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('index')  # Redirect to home page after successful signup
+            # Check if a user with the given email already exists
+            email = form.cleaned_data['gmail']
+            if User.objects.filter(gmail=email).exists():
+                messages.error(request, 'User with this email already exists.')
+            else:
+                # Save the user
+                user = form.save(commit=False)
+                user.user_id = User.generate_unique_user_id()
+                user.save()
+                return redirect('/login')  # Redirect to homepage or any other desired page
+        else:
+            # Form is not valid, return form along with error messages
+            messages.error(request, 'Invalid form data. Please correct the errors below.')
     else:
         form = UserForm()
     return render(request, 'signup.html', {'form': form})
 
+
+
+@csrf_exempt
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('gmail')
+        login_password = request.POST.get('login_password')
+        user = User.objects.filter(gmail=email, login_password=login_password).first()
+        print(user)
+        if user :
+            # login(request, user)
+            # Django's built-in authentication system automatically updates the last_login time
+            resp = redirect('index')  # Redirect to home or wherever after login
+            resp.set_cookie("email",email)
+            resp.set_cookie("id",user.user_id)
+            return resp
+        else:
+            # If authentication fails, return 401 Unauthorized status code
+            return HttpResponse("Unauthorized", status=401)
+    
+    form = LoginForm()
+    rsp= render(request, 'login.html', {'form':form, 'title':'log in'})
+    return rsp
+
+
 def index(request):
     return render(request, 'index.html')
 
-
+def my_view(request):
+    # Your view logic here
+    return render(request, 'index.html', {'user': request.user})
 
 def format_expenses_as_table(expenses):
     # Define headers for the table

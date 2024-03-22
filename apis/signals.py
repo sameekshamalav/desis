@@ -15,5 +15,5 @@ def create_expense_from_mailexpense(sender, instance, created, **kwargs):
                  item=instance.item,
                  amount=instance.amount,
                  category=instance.category,
-                 date=instance.date_of_purchase.date()
+                 date=instance.date_of_purchase
              )
