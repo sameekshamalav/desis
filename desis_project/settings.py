@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import logging
 from pathlib import Path
+from datetime import timedelta
+# from logging.config import dictConfig
+# from django.utils.encoding import smart_bytes
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +30,15 @@ SECRET_KEY = 'django-insecure-7wfvd4x)9oky+y5s*7ue_6%s8c#qy8v1hr9yz_v01k767yvgle
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+# if not DEBUG:
+#     logging.info("Debugging is not enabled.")
+#     ALLOWED_HOSTS = ["*"]
+#     LOG_LEVEL = "ERROR"
+# else:
+#     logging.info("Debugging is enabled.")
+#     ALLOWED_HOSTS = ["*"]
+#     LOG_LEVEL = "DEBUG"
 
 
 # Application definition
@@ -37,7 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apis'
+    'apis.apps.ApisConfig',
+    'django_celery_beat',
+    # 'redis-server',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +93,7 @@ WSGI_APPLICATION = 'desis_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'expensetracker',
+        'NAME': 'solution',
         'USER': 'root',
         'PASSWORD': 'YOUR WORKBENCH PASSWORD',
         'HOST': 'localhost',
@@ -107,6 +123,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS = [
+    # 'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    # 'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    # 'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -129,3 +151,85 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+
+# # Celery Configuration
+# CELERY_BROKER_URL = 'redis://default:ySJvfyznHCUhQwitowrhvQeF2JItWHDm@redis-10237.c12.us-east-1-4.ec2.cloud.redislabs.com:10237'
+# CELERY_RESULT_BACKEND = 'redis://default:ySJvfyznHCUhQwitowrhvQeF2JItWHDm@redis-10237.c12.us-east-1-4.ec2.cloud.redislabs.com:10237'
+
+# Additional Celery settings can go here...
+# settings.py
+
+
+
+
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "formatters": {
+#         "console": {
+#             "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
+#         },
+#     },
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#             "formatter": "console",
+#         },
+#         # "file": {
+#         #     "class": "logging.FileHandler",
+#         #     "filename": "logs/debug.log",
+#         #     "formatter": "console",
+#         # },
+#     },
+#     "loggers": {
+#         "": {
+#             "level": LOG_LEVEL,
+#             "handlers": ["console"],
+#         },
+#     },
+# }
+
+# logging.config.dictConfig(LOGGING)
+
+
+
+# AUTH_USER_MODEL = "apis.UserStatus"
+# REST_FRAMEWORK = {
+#     "DEFAULT_PERMISSION_CLASSES": [
+#         "rest_framework.permissions.IsAuthenticated",
+#         "rest_framework.permissions.IsAdminUser",
+#     ],
+#     "DEFAULT_AUTHENTICATION_CLASSES": (
+#         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+#     ),
+# }
+
+# JWT_AUTH = {
+#     "JWT_ENCODE_HANDLER": "rest_framework_jwt.utils.jwt_encode_handler",
+#     "JWT_DECODE_HANDLER": "rest_framework_jwt.utils.jwt_decode_handler",
+#     "JWT_PAYLOAD_HANDLER": "rest_framework_jwt.utils.jwt_payload_handler",
+#     "JWT_PAYLOAD_GET_USER_ID_HANDLER": "rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler",  # noqa
+#     "JWT_RESPONSE_PAYLOAD_HANDLER": "rest_framework_jwt.utils.jwt_response_payload_handler",  # noqa
+#     "JWT_SECRET_KEY": "SECRET_KEY",
+#     "JWT_GET_USER_SECRET_KEY": None,
+#     "JWT_PUBLIC_KEY": None,
+#     "JWT_PRIVATE_KEY": None,
+#     "JWT_ALGORITHM": "HS256",
+#     "JWT_VERIFY": True,
+#     "JWT_VERIFY_EXPIRATION": True,
+#     "JWT_LEEWAY": 0,
+#     "JWT_EXPIRATION_DELTA": timedelta(days=30),
+#     "JWT_AUDIENCE": None,
+#     "JWT_ISSUER": None,
+#     "JWT_ALLOW_REFRESH": True,
+#     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
+#     "JWT_AUTH_HEADER_PREFIX": "Bearer",
+#     "JWT_AUTH_COOKIE": None,
+# }
+
+
+# JWT_SECRET_KEY = 'your_secret_key_here'
+# JWT_EXPIRATION_DELTA = None

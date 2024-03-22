@@ -1,0 +1,194 @@
+{% comment %} {% comment %} {% comment %} {% comment %} 
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Expenses</title>
+    <link rel="stylesheet" href="styles.css">
+    {% comment %} <link rel="stylesheet" href="{% static 'styles.css' %}"> {% endcomment %}
+    {% comment %} <script src="{% static 'mail_expenses.js' %}"></script> {% endcomment %}
+{% comment %} </head> {% endcomment %}
+{% comment %} <body> {% endcomment %}
+    {% comment %} <h1>Mail Expenses</h1>
+    <table id="expenses-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Order ID</th>
+                <th>Platform</th>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Mail expenses will be dynamically added here -->
+        </tbody>
+    </table>
+    <script src="mail_expenses.js"></script>
+</body>
+</html>  {% endcomment %} 
+{% comment %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Expenses</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'custom.css' %}"> <!-- Custom CSS -->
+    <script src="{% static 'mail_expenses.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-dark">Mail Expenses</h1> <!-- Darken the heading text -->
+        <table class="table">
+            <thead class="light-blue"> <!-- Apply custom light blue background -->
+                <tr>
+                    <th>Date</th>
+                    <th>Order ID</th>
+                    <th>Platform</th>
+                    <th>Item</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mail expenses will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="mail_expenses.js"></script>
+</body>
+</html> {% endcomment %} 
+{% comment %} 
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Expenses</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'custom.css' %}"> <!-- Custom CSS -->
+    <script src="{% static 'mail_expenses.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-dark">Mail Expenses</h1> <!-- Darken the heading text -->
+        <form id="expenses-form">
+            <label for="user-id">User ID:</label>
+            <input type="text" id="user-id" name="user-id">
+            {% comment %} <label for="time-period">Time Period (in days):</label> {% endcomment %}
+            {% comment %} <input type="number" id="time-period" name="time-period"> {% endcomment %} 
+            {% comment %} <button type="submit">Submit</button>
+        </form>
+        <table class="table">
+            <thead class="light-blue"> <!-- Apply custom light blue background -->
+                <tr>
+                    <th>Date</th>
+                    <th>Order ID</th>
+                    <th>Platform</th>
+                    <th>Item</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody id="expenses-table">
+                <!-- Mail expenses will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="mail_expenses.js"></script>
+</body> 
+</html> 
+{% endcomment %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Expenses</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'custom.css' %}"> <!-- Custom CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-dark">Mail Expenses</h1> <!-- Darken the heading text -->
+        <form id="expenseForm">
+            {% csrf_token %}
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <hr>
+        <h2>Mail Expense Details:</h2>
+        <table id="expenseTable" class="table">
+            <thead class="light-blue"> <!-- Apply custom light blue background -->
+                <tr>
+                    <th>Date</th>
+                    <th>Order ID</th>
+                    <th>Platform</th>
+                    <th>Item</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody id="expenseBody">
+                <!-- Mail expenses will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="{% static 'mail_expenses.js' %}"></script>
+</body>
+</html> 
+
+
+
+<!-- template.html -->
+<!-- template.html -->
+
+
+
+
+
+
+{% comment %}  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Expenses View</title>
+</head>
+<body>
+    <h1>Mail Expenses View</h1>
+    <form method="post" action="{% url 'mail_expenses' %}">
+
+        {% csrf_token %}
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="id">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> 
+{% endcomment %}

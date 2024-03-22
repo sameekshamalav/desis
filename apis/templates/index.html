@@ -147,7 +147,11 @@
             /* Add shadow */
             margin-bottom: 20px;
         }
+        .user-info p {
+            color: white; /* Change text color to white */
+        }
     </style>
+    
 </head>
 
 <body>
@@ -157,24 +161,32 @@
             <input type="checkbox" id="darkModeToggle">
             <span class="slider round"></span>
         </label> {% endcomment %}
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                <p>Welcome, {{ user.username }}!</p>
+                <p>User ID: {{getCookie}}</p>
+            {% else %}
+                <p>Welcome, Guest!</p>
+                <!-- Handle guest users here -->
+            {% endif %}
+        </div>
     </header>
     <main>
 
-
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-offset-3">
-                        <a href="#addExpenseModal" class="btn" data-toggle="modal"><i
-                                class="material-icons">&#xE147;</i>
-                            <span>Add New Expense</span></a>
-                        <a href="/summary" class="btn"><i class="material-icons">&#xE8B8;</i><span>Show Expense
-                                Summary</span></a>
-                        <a href="#getUserStatus" class="btn" data-toggle="modal"><i class="material-icons">&#xE147;</i>
-                            <span>Add/Update Personal Data</span></a>
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-offset-1">
+                    <a href="#addExpenseModal" class="btn" data-toggle="modal"><i class="material-icons">&#xE147;</i>
+                        <span>Add New Expense</span></a>
+                    <a href="/summary" class="btn"><i class="material-icons">&#xE8B8;</i><span>Show Expense Summary</span></a>
+                    <a href="#getUserStatus" class="btn" data-toggle="modal"><i class="material-icons">&#xE147;</i>
+                        <span>Add/Update Personal Data</span></a>
                         <a href="/comparepredict" class="btn" data-toggle="modal"><i class="material-icons">&#xE8B8;</i>
                             <span>Add/Update Personal Data</span></a>
-                    </div>
+                    <a href="mail_expense/" class="btn"><i class="material-icons">&#xE8B8;</i><span>E-Mail Expenses</span></a>    
+                    <a href="/summary" class="btn"><i class="material-icons">&#xE8B8;</i><span>Leaderboard</span></a>  
+                    <a href="/summary" class="btn"><i class="material-icons">&#xE8B8;</i><span>Friends</span></a> 
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -460,6 +472,24 @@
                 chatPopup.style.display = 'none';
             }
         });
+        function getCookie(cookieName) {
+            // Split all cookies into an array
+            var cookies = document.cookie.split(';');
+            
+            // Iterate through each cookie
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                
+                // Check if the cookie starts with the provided name
+                if (cookie.startsWith(cookieName + '=')) {
+                    // Extract and return the cookie value
+                    return decodeURIComponent(cookie.substring(cookieName.length + 1));
+                }
+            }
+            
+            // Return null if the cookie with the given name is not found
+            return null;
+        }
 
         function openForm() {
             document.getElementById("myForm").style.display = "block";
@@ -469,6 +499,22 @@
             document.getElementById("myForm").style.display = "none";
             history.pushState(null, '', '');
         }
+
+         // Function to fetch user information
+        function fetchUserInfo() {
+            // Make an AJAX request to your backend to fetch user information
+            // Replace 'api/user/info' with your actual endpoint
+            fetch('/api/user/info')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the DOM with user information
+                    document.getElementById('user-info').innerHTML = `Welcome, ${data.username}! User ID: ${data.user_id}`;
+                })
+                .catch(error => console.error('Error fetching user information:', error));
+        }
+
+        // Call fetchUserInfo() when the page loads
+        window.onload = fetchUserInfo;
 
     </script>
 
