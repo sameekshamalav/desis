@@ -27,3 +27,18 @@ expensebtn.addEventListener('click', function() {
         console.error('Error:', error);
     });
 });
+
+document.getElementById("yesButton").addEventListener("click", function() {
+    window.open("http://127.0.0.1:8000/comparepredict", "_blank");
+    hideConfirmation();
+});
+
+document.getElementById("noButton").addEventListener("click", function() {
+    hideConfirmation();
+});
+
+function hideConfirmation() {
+    document.getElementById("confirmationMessage").style.display = "none";
+    document.getElementById("yesButton").style.display = "none";
+    document.getElementById("noButton").style.display = "none";
+}

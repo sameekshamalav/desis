@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(request => {
             type: "popup",
             focused: true,
             width: 300,
-            height: 300,
+            height: 350,
             top: 0,
             left: 1000,
         }, () => {
