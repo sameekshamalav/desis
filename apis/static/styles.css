@@ -148,26 +148,7 @@ th {
 .modal form label {
   font-weight: normal;
 }
-<<<<<<< HEAD
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.cancel {
-  background-color: #f44336;
-}
-
-=======
   .close {
     color: #aaa;
     float: right;
@@ -194,4 +175,3 @@ th {
 .text-dark {
     color: #343a40; /* Darken the text color */
 }
->>>>>>> dd5a160 (alter)

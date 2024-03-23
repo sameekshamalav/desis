@@ -91,7 +91,8 @@ class User(models.Model):
         db_table = 'user'
 
 class UserStatus(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    # user_id = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     total_expenses = models.IntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     allowedexpense = models.IntegerField(default=0)
@@ -101,30 +102,36 @@ class UserStatus(models.Model):
     @property
     def score(self):
         if self.allowedexpense != 0:
-            return round((1 - (self.total_expenses / self.allowedexpense)) * 100, 2)
+            print(self.allowedexpense)
+            if self.allowedexpense > self.total_expenses:
+                return min(round((1 - (self.total_expenses / self.allowedexpense)) * 100, 2),100)
+            else:
+                return 0
+
         else:
             return None
 
     @property
     def currentbalance(self):
+        print("cb",self.monthlybudget - self.total_expenses,self.monthlybudget,self.total_expenses)
         return self.monthlybudget - self.total_expenses
     
     class Meta:
         db_table='user_status'
 
 
-class MailExpense(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
-    id = models.AutoField(primary_key=True)
-    # user_id = models.CharField(max_length=255)
-    amount = models.PositiveIntegerField()
-    item = models.TextField()
-    category = models.TextField()
-    date_of_purchase = models.DateTimeField()
-    platform = models.TextField(default="self")
-    status = models.TextField()
-    order_id = models.TextField()
-    feedback = models.TextField()
+# class MailExpense(models.Model):
+#     user_id = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+#     id = models.AutoField(primary_key=True)
+#     # user_id = models.CharField(max_length=255)
+#     amount = models.PositiveIntegerField()
+#     item = models.TextField()
+#     category = models.TextField()
+#     date_of_purchase = models.DateTimeField()
+#     platform = models.TextField(default="self")
+#     status = models.TextField()
+#     order_id = models.TextField()
+#     feedback = models.TextField()
 
 
 class Expense(models.Model):

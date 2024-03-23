@@ -6,3 +6,7 @@ pymysql
 django
 transformers
 jwt
+sklearn
+bs4
+pandas
+lxml
