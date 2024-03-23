@@ -59,7 +59,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
-import datetime
+from datetime import datetime
 import json
 from collections import defaultdict
 from .utils import compare_p
@@ -68,9 +68,10 @@ conversation=""
 info_string=""
 # home
 def prompt(request):
+    cookies = request.COOKIES
     expenses = Expense.objects.all()
     my_expense=format_expenses_as_table(expenses)
-    user_status = UserStatus.objects.get(user_id=1)
+    user_status = UserStatus.objects.filter(user_id=cookies["id"]).first()
     my_status=format_user_status_table(user_status)
     
     request.session['conversation']=[]
@@ -103,6 +104,21 @@ def get_user_credentials(request, user_id):
         return JsonResponse({'error': str(e)}, status=500)
 
 
+def mail_expenses_page(request):
+    # process_emails
+
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    user = User.objects.filter(user_id=user_id).first()
+    print(cookies)
+    process_emails(user.gmail,user.app_password,user.pk)
+    
+    return redirect(to="/")
+  
+    
 
 # def generate_token(request, user_id):
 #     try:
@@ -128,8 +144,15 @@ def home(request):
     print(request.session)
     # conversation= request.session['conversation']
     conversation= ""
-
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    user = User.objects.filter(user_id=user_id).first()
     expenses = Expense.objects.all()
+
+    
     if request.method == 'POST':
         print(request.COOKIES)
         # month = request.POST['month']
@@ -141,6 +164,19 @@ def home(request):
 # create
 @csrf_exempt
 def add(request):
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    print(user_id)
+    user = User.objects.filter(user_id=user_id)
+    if user.exists():
+        user=user.first()
+    else:
+        print("I dont exist")
+        redirect("login")
+
     if request.method == 'POST':
         
         item = request.POST['item']
@@ -148,40 +184,60 @@ def add(request):
         category = request.POST['category']
         date = request.POST['date']
 
-        expense = Expense(item=item, amount=amount, category=category, date=date)
+        expense = Expense(user=user,item=item, amount=amount, category=category, date=date)
         expense.save()
-        prompt(request)
+        # prompt(request)
         # # Update total_expenses for the user
-        # user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
-        # user_status.total_expenses += amount
-        # user_status.save()
+        user_status = UserStatus.objects.get(user_id=user_id)
+        user_status.total_expenses += amount
+        user_status.save()
 
     return redirect(home)
 
 def add_user_status(request):
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    user = User.objects.filter(pk=user_id).first()
+
     if request.method == "POST":
-        
         allowedexpense = int(request.POST.get("allowedexpense"))
         monthlybudget = int(request.POST.get("monthlybudget"))
         pincode = int(request.POST.get("pincode"))
         # gmail=str(request.POST.get("gmail"))
         # app_password=str(request.POST.get("a"))
         # Create or update UserStatus for the user
-        user_status, created = UserStatus.objects.get_or_create(user_status=request.user_status) 
-        user_status.allowedexpense = allowedexpense
-        user_status.monthlybudget = monthlybudget
-        user_status.pincode = pincode
-        # user_status.gmail = gmail
-        # user_status.app_password = app_password 
+        user_status = UserStatus.objects.filter(user=user)
+        if user_status.exists():
+            user_status = user_status.first()
+            # user_status=user
+            user_status.allowedexpense = allowedexpense
+            user_status.monthlybudget = monthlybudget
+            user_status.pincode = pincode
+            # user_status.gmail = gmail
+            # user_status.app_password = app_password 
+        else:
+         user_status= UserStatus.objects.create(allowedexpense=allowedexpense,monthlybudget=monthlybudget,pincode=pincode,user=user)
+        print(user_status)
+        
         user_status.save()
         prompt(request)
     return redirect(expense_summary)  # Render the form to add user status
 
-def update(request, id):
-    id = int(id)
-    expense_fetched = Expense.objects.get(id = id)
-    # user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
-    # user_status.total_expenses -= expense_fetched.amount
+def update(request,id=None):
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    user = User.objects.filter(user_id=user_id).first()
+    user_id = user_id
+    expense_fetched = Expense.objects.filter(pk=id).first()
+
+    user_status = UserStatus.objects.filter(user_id=user_id).first()  # Assuming user_id 1 is the only user
+    user_status.total_expenses -= expense_fetched.amount
     
     if request.method == 'POST':
         
@@ -189,53 +245,81 @@ def update(request, id):
         amount = int(request.POST['amount'])
         category = request.POST['category']
         date = request.POST['date']
-
-        expense_fetched.item = item
-        expense_fetched.amount = amount
-        expense_fetched.category = category
-        expense_fetched.date = date
-        # user_status.total_expenses+=amount
-        # user_status.save()
-        expense_fetched.save()
-        prompt(request)
+        if expense_fetched:
+            # expense_fetched=expense_fetched.first()
+            expense_fetched.user=user
+            expense_fetched.item = item
+            expense_fetched.amount = amount
+            expense_fetched.category = category
+            expense_fetched.date = date
+            user_status.total_expenses+=amount
+            user_status.save()
+            expense_fetched.save()
+            prompt(request)
     return redirect(home)
 
-def delete(request, id):
-    id = int(id)
-    expense_fetched = Expense.objects.get(id = id)
+def delete(request,id=None):
+    cookies = request.COOKIES
+    try:
+        user_id = cookies["id"]
+    except:
+        redirect("login")
+    user = User.objects.filter(user_id=user_id).first()
+    user_id = user_id
+    expense_fetched = Expense.objects.filter(pk=id)
+    if expense_fetched.exists():
+        expense_fetched=expense_fetched.first()
+        user_status = UserStatus.objects.get(user_id=user_id)  # Assuming user_id 1 is the only user
+        user_status.total_expenses -= expense_fetched.amount
+        user_status.save()
     
-    # user_status = UserStatus.objects.get(user_id=1)  # Assuming user_id 1 is the only user
-    # user_status.total_expenses -= expense_fetched.amount
-    # user_status.save()
-    expense_fetched.delete()
+        expense_fetched.delete()
     prompt(request)
     return redirect(home)
 
+# @api_view(["POST"])
 def expense_summary(request):
-    # Retrieve all expenses from the database
-    user_id = request.user_id
-    expenses = Expense.objects.all()
+    # data = request.data
+    cookies = request.COOKIES
+    user_id=cookies["id"]
+    # cookies = request.COOKIES
+    # try:
+    #     user_id = cookies["id"]
+    # except:
+    #     redirect("login")
+
+    expenses = Expense.objects.filter(user=user_id)
+    print(expenses)
 
     # Calculate total spending for each category
     category_totals = expenses.values('category').annotate(total=Sum('amount'))
-
+    print(expense_summary)
     # Calculate total spending across all categories
     total_spending = expenses.aggregate(total=Sum('amount'))['total']
 
     # Calculate percentage spending for each category
     category_percentages = {}
     for category_total in category_totals:
+        print("iwork")
         category_percentages[category_total['category']] = (category_total['total'] / total_spending) * 100
-    user_id=User.objects.get(user_id)
+    
     # Aggregate spending data based on dates
+    print(user_id,"q")
     daily_spending_data = expenses.values('date').annotate(total=Sum('amount'))
-    user_status = UserStatus.objects.get(user_id)
-    print(user_id,"qwerru")
+    print(user_id,"q2")
+    user_status = UserStatus.objects.filter(user=user_id).first()
+    print()
+    total =0
+    for data in list(daily_spending_data):
+        total+=int(data["total"])
+    print(total)
     context = {
         'category_percentages': category_percentages,
         'daily_spending_data': daily_spending_data,
-        'user_status': user_status
+        'user_status': user_status,
+        "total":total
     }
+    print(context)
     return render(request, 'expense_summary.html', context)
 
 def process_emails(username,password,user):
@@ -245,9 +329,9 @@ def process_emails(username,password,user):
    
     # Function to connect to the IMAP server
     def connect_to_imap(username, password):
-        print("ssss", username , "ssss", password)
+        
         mail = imaplib.IMAP4_SSL('imap.gmail.com')
-        print("ssss", username , "ssss", password)
+        
         mail.login(username, password)
         print("ssss", username , "ssss", password)
 
@@ -474,11 +558,11 @@ def process_emails(username,password,user):
     return True
 
    
-def process_emails_view(request):
-    if request.method == 'POST':
-        # Assuming username and password are passed in the request
-        username = request.POST.get('gmail')
-        password = request.POST.get('app_password')
+# def process_emails_view(request):
+#     if request.method == 'POST':
+#         # Assuming username and password are passed in the request
+#         username = request.POST.get('gmail')
+#         password = request.POST.get('app_password')
         # request.POST.get('password')
 # def process_emails_view(request):
 #     if request.method == 'POST':
@@ -551,21 +635,7 @@ def mail_expenses_view(request):
 #     else:
 #         return JsonResponse({"error": "Method not allowed"}, status=405)
 
-def mail_expenses_page(request):
-    # process_emails
 
-    cookies = request.COOKIES
-    try:
-        user_id = cookies["id"]
-    except:
-        redirect("login")
-    user = User.objects.filter(user_id=user_id).first()
-    print(cookies)
-    process_emails(user.gmail,user.app_password,user.pk)
-    
-    return redirect(to="/")
-  
-    
 
 # class MailExpensesView(TemplateView):
 #     template_name = 'mail_expenses.html'
@@ -597,31 +667,31 @@ def mail_expenses_page(request):
 #             return HttpResponse(status=204)
 #         else:
 #             return HttpResponse("Failed to process emails", status=500)
-def create_user(request):
-    # Generate a random 4-digit user_id
-    user_id = random.randint(1000, 9999)
-    # Ensure user_id doesn't already exist
-    while User.objects.filter(user_id=user_id).exists():
-        user_id = random.randint(1000, 9999)
+# def create_user(request):
+#     # Generate a random 4-digit user_id
+#     user_id = random.randint(1000, 9999)
+#     # Ensure user_id doesn't already exist
+#     while User.objects.filter(user_id=user_id).exists():
+#         user_id = random.randint(1000, 9999)
     
-    # Other user data
-    user_name = "Sample User"  # You can replace this with actual user data
-    phone_number = "1234567890"  # You can replace this with actual user data
-    gmail = "example@example.com"  # You can replace this with actual user data
-    login_password = "password"  # You can replace this with actual user data
-    app_password = "app_password"  # You can replace this with actual user data
+#     # Other user data
+#     user_name = "Sample User"  # You can replace this with actual user data
+#     phone_number = "1234567890"  # You can replace this with actual user data
+#     gmail = "example@example.com"  # You can replace this with actual user data
+#     login_password = "password"  # You can replace this with actual user data
+#     app_password = "app_password"  # You can replace this with actual user data
 
-    # Create the user
-    user = User.objects.create(
-        user_id=user_id,
-        user_name=user_name,
-        phone_number=phone_number,
-        gmail=gmail,
-        login_password=login_password,
-        app_password=app_password
-    )
+#     # Create the user
+#     user = User.objects.create(
+#         user_id=user_id,
+#         user_name=user_name,
+#         phone_number=phone_number,
+#         gmail=gmail,
+#         login_password=login_password,
+#         app_password=app_password
+#     )
 
-    return HttpResponse(f"User created with user_id: {user_id}")
+#     return HttpResponse(f"User created with user_id: {user_id}")
 
 
 def sign_up(request):
@@ -637,6 +707,8 @@ def sign_up(request):
                 user = form.save(commit=False)
                 user.user_id = User.generate_unique_user_id()
                 user.save()
+                user_status = UserStatus(user=user)
+                user_status.save()
                 return redirect('/login')  # Redirect to homepage or any other desired page
         else:
             # Form is not valid, return form along with error messages
@@ -673,7 +745,7 @@ def login_view(request):
 def index(request):
     return render(request, 'index.html')
 
-def my_view(request):
+# def my_view(request):
     # Your view logic here
     return render(request, 'index.html', {'user': request.user})
 
@@ -703,15 +775,20 @@ def format_expenses_as_table(expenses):
     return formatted_table
 
 def format_user_status_table(user_status):
+    # usd = dict(user_status)
     # Initialize the header and separator
     table = "Attribute            | Value\n"
-    
+    # keys = usd.keys()
 
     # Iterate over each field in the UserStatus model
     for field in user_status._meta.fields:
+
         # Format the field name and value
-        field_name = field.name.capitalize().replace('_', ' ')
-        field_value = getattr(user_status, field.name)
+
+        field_name = field.name
+         
+        field_value = getattr(user_status, field_name)
+
         
         # Add the field name and value to the table
         table += f"{field_name.ljust(20)}| {field_value}\n"
@@ -730,7 +807,7 @@ def chatbot_view(request):
 
         # Define the API endpoint and parameters
         api_endpoint = "https://api.openai.com/v1/chat/completions"
-        api_key = "YOUR API KEY"  # Replace with your actual API key
+        api_key =  ""   # Replace with your actual API key
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}"
@@ -742,7 +819,7 @@ def chatbot_view(request):
 
         # Make a POST request to the API
         response = requests.post(api_endpoint, json=data, headers=headers)
-
+        print(response)
         # Extract chatbot replies from the API response
         if response.status_code == 200:
             chatbot_replies = [message['message']['content'] for message in response.json()['choices'] if message['message']['role'] == 'assistant']
@@ -773,7 +850,7 @@ def comparepredict(request):
 
         # API CALL TO GET PRICE HISTORY
         product_gtin = {
-            'dell laptop': '5711045220814',
+            'dell laptop': '0195908483175',
             'hp mouse': '0195908483175',
             'sony headphones': '4905524731903',
             'samsung galaxy s21': '8806090886713',
@@ -829,80 +906,86 @@ def comparepredict(request):
         # Extract timestamps and average prices
         timestamps = []
         avg_prices = []
+        if type(data) == dict:
 
-        for timestamp, info in data.items():
-            timestamps.append(info['key'])  # Assuming 'key' is the numerical representation of the timestamp
-            avg_prices.append(info['avg_price_in_cents'])
+            for timestamp, info in list(data.items()):
+                timestamps.append(info['key'])  # Assuming 'key' is the numerical representation of the timestamp
+                avg_prices.append(info['avg_price_in_cents'])
 
-        # Convert timestamps into a 2D array
-        X = np.array(timestamps).reshape(-1, 1)
+            # Convert timestamps into a 2D array
+            X = np.array(timestamps).reshape(-1, 1)
 
-        # Convert average prices into a 1D array
-        y = np.array(avg_prices)
+            # Convert average prices into a 1D array
+            y = np.array(avg_prices)
 
-        # Split data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            # Split data into training and testing sets
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-        # Train linear regression model
-        model = LinearRegression()
-        model.fit(X_train, y_train)
+            # Train linear regression model
+            model = LinearRegression()
+            model.fit(X_train, y_train)
 
-        # Evaluate model
-        y_pred = model.predict(X_test)
-        mse = mean_squared_error(y_test, y_pred)
-        print("Mean Squared Error:", mse)
+            # Evaluate model
+            y_pred = model.predict(X_test)
+            mse = mean_squared_error(y_test, y_pred)
+            print("Mean Squared Error:", mse)
 
-        # Function to predict price for a specific date
-        def predict_price_for_date(date):
-            # Convert date to timestamp
-            timestamp = int(date.timestamp())
-            # Predict price using the model
-            predicted_price = model.predict(np.array([[timestamp]]))
-            return predicted_price
+            # Function to predict price for a specific date
+            def predict_price_for_date(date):
+                # Convert date to timestamp
+                timestamp = int(date.timestamp())
+                # Predict price using the model
+                predicted_price = model.predict(np.array([[timestamp]]))
+                return predicted_price
 
-        # Example: Predict price for August 19, 2025
-        input_date = datetime.datetime(2025, 8, 19)
-        predicted_price = predict_price_for_date(input_date)
+            # Example: Predict price for August 19, 2025
+            input_date = datetime(2025, 8, 19)
+            predicted_price = predict_price_for_date(input_date)
 
-        predicted_price = predicted_price * 0.0542
+            predicted_price = predicted_price * 0.0542
 
-        print("Predicted price for", input_date.strftime('%Y-%m-%d'), ":", predicted_price)
-        
-        # Return a JSON response indicating successful logging
-        # return JsonResponse({'message': 'Data logged successfully'})
+            print("Predicted price for", input_date.strftime('%Y-%m-%d'), ":", predicted_price)
+            
+            # Return a JSON response indicating successful logging
+            # return JsonResponse({'message': 'Data logged successfully'})
 
-        # MINIMUM AND MAXIMUM PRICE MONTH PREDICTION
+            # MINIMUM AND MAXIMUM PRICE MONTH PREDICTION
 
-        # Group data by month
-        print("Data is fine here : ", data)
-        monthly_data = defaultdict(list)
-        for date_str, info in data.items():
-            month = date_str[:7]
-            monthly_data[month].append(info)
-        
-        # Calculate total purchases and average price for each month
-        result = {}
-        for month, purchases in monthly_data.items():
-            total_purchases = sum(info['data_points'] for info in purchases)
-            avg_price = sum(info['avg_price_in_cents'] * info['data_points'] for info in purchases) / total_purchases
-            result[month] = {'total_purchases': total_purchases, 'avg_price': avg_price}
-        
-        # Find the month with maximum purchases and lowest average price
-        max_purchases_month = max(result, key=lambda m: result[m]['total_purchases'])
-        lowest_avg_price_month = min(result, key=lambda m: result[m]['avg_price'])
+            # Group data by month
+            print("Data is fine here : ", data)
+            monthly_data = defaultdict(list)
+            for date_str, info in data.items():
+                month = date_str[:7]
+                monthly_data[month].append(info)
+            
+            # Calculate total purchases and average price for each month
+            result = {}
+            for month, purchases in monthly_data.items():
+                total_purchases = sum(info['data_points'] for info in purchases)
+                avg_price = sum(info['avg_price_in_cents'] * info['data_points'] for info in purchases) / total_purchases
+                result[month] = {'total_purchases': total_purchases, 'avg_price': avg_price}
+            
+            # Find the month with maximum purchases and lowest average price
+            max_purchases_month = max(result, key=lambda m: result[m]['total_purchases'])
+            lowest_avg_price_month = min(result, key=lambda m: result[m]['avg_price'])
 
-        print("Month with maximum purchases:", max_purchases_month)
-        print("Month with lowest average price:", lowest_avg_price_month)
+            print("Month with maximum purchases:", max_purchases_month)
+            print("Month with lowest average price:", lowest_avg_price_month)
 
-        context = {
-            'variable': predicted_price,
-            'max_purchases_month': max_purchases_month,
-            'lowest_avg_price_month': lowest_avg_price_month,
-            'comparison_result': comparison_result
-        }
-    else:
-        context = {
-            'variable': ''
-        }
+            context = {
+                'variable': predicted_price,
+                'max_purchases_month': max_purchases_month,
+                'lowest_avg_price_month': lowest_avg_price_month,
+                'comparison_result': comparison_result
+            }
+        else:
+            context = {
+                'variable': "not found",
+                'max_purchases_month': "not found",
+                'lowest_avg_price_month': "not found",
+                'comparison_result': "not found",
+            }
         
     return render(request, 'comparison.html', context)
+
+
